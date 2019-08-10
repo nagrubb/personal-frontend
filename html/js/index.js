@@ -271,7 +271,7 @@
     }
 
     $.ajax({
-      url: "cycle",
+      url: "api/v1/cycle",
       dataType: 'json',
       success: function(result) {
         fillFunction(result);
@@ -318,7 +318,7 @@
   }
 
   function fetchStockPrice(quote) {
-    var url = `stock/${quote}`;
+    var url = `api/v1/stock/${quote}`;
     var selector = `[id=${quote}]`;
 
     var fillFunction = function(selector, price) {
