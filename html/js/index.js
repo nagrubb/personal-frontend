@@ -333,7 +333,7 @@
         fillFunction(selector, `$${result.closing_price}`);
       },
       error: function() {
-        fillFunction(selector, "");
+        fillFunction(selector, "N/A");
       }
     });
   }
@@ -406,6 +406,9 @@
 
       //kick off some AJAX calls to fill in some dynamic data
       fetchCyclingGoalData();
+      fetchStockPrice("amzn");
+      fetchStockPrice("aaxn");
+      fetchStockPrice("msft");
 
       $.getJSON('json/visited_countries.geo.json', function(data) {
         createMap('map', data);
