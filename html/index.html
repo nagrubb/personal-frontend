@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<title>Nathan Grubb</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css" />
+<link rel="stylesheet" href="css/roboto.font.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/jquery.terminal.min.css" />
+<link rel="stylesheet" href="css/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
+<link rel="stylesheet" href="css/index.css">
+<link rel="shortcut icon" href="favicon-suitcase.ico" type="image/x-icon" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.mousewheel-min.js"></script>
+<script src="js/jquery.terminal.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/visited_places.js"></script>
+<script src="js/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="></script>
+<body class="w3-light-grey">
+<div id="console"></div>
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+    <!-- Left Column -->
+    <div class="w3-third">
+      <div class="w3-white w3-text-grey w3-card-4" >
+        <div class="w3-display-container">
+          <img src="images/profile.jpg" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-white">
+            <h2>Nathan Grubb</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>Software Engineering Manager</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Ho Chi Minh City, Vietnam</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i><a href="mailto:me@nathangrubb.io">me@nathangrubb.io</a></p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-blue"></i>(***) ***-****</p>
+          <p>
+            <a href="https://www.facebook.com/ngrubb2"><i class="fa fa-facebook-official fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://twitter.com/silent_snowman"><i class="fa fa-twitter fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://www.linkedin.com/in/nathangrubb"><i class="fa fa-linkedin fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://github.com/silent-snowman"><i class="fa fa-github fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://nathancaty.slack.com"><i class="fa fa-slack fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://plus.google.com/u/0/101913867428624409865"><i class="fa fa-google-plus fa-2x w3-hover-opacity w3-text-blue"></i></a>
+            <a href="https://silent-snowman.github.io/"><i class="fa fa-comments fa-2x w3-hover-opacity w3-text-blue"></i></a>
+          </p>
+          <hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
+          <p>Linux Development</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:90%">
+              <div class="w3-center" style="color: #3c3c3c">90%</div>
+            </div>
+          </div>
+          <p>Windows Development</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:90%">
+              <div class="w3-center" style="color: #3c3c3c">90%</div>
+            </div>
+          </div>
+          <p>C/C++ Programming</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:90%">
+              <div class="w3-center" style="color: #3c3c3c">90%</div>
+            </div>
+          </div>
+          <p>Python Programming</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:70%">
+              <div class="w3-center" style="color: #3c3c3c">70%</div>
+            </div>
+          </div>
+          <p>C# Programming</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:50%">
+              <div class="w3-center" style="color: #3c3c3c">50%</div>
+            </div>
+          </div>
+          <p>SQL Queries</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:30%">
+              <div class="w3-center" style="color:#3c3c3c">30%</div>
+            </div>
+          </div>
+          <p>Splunk</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:20%">
+              <div class="w3-center" style="color:#3c3c3c">20%</div>
+            </div>
+          </div>
+          <br>
+          <hr>
+          <p class="w3-large w3-text-theme">
+            <b>
+              <i class="fa fa-language fa-fw w3-margin-right w3-text-blue"></i>Languages
+            </b>
+          </p>
+          <p>English</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:95%">
+              <div class="w3-center" style="color:#3c3c3c">Fluent</div>
+            </div>
+          </div>
+          <p>French</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:50%">
+              <div class="w3-center" style="color:#3c3c3c">Conversational</div>
+            </div>
+          </div>
+          <p>Spanish</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:20%">
+              <div class="w3-center" style="color:#3c3c3c">Basic</div>
+            </div>
+          </div>
+          <p>Vietnamese</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:5%">
+              <div class="w3-center" style="color:#3c3c3c">Learning</div>
+            </div>
+          </div>
+          <br>
+          <hr>
+          <p class="w3-large">
+            <b>
+              <i class="fa fa-bicycle fa-fw w3-margin-right w3-text-blue"></i>Cycling Goals
+              <a href="https://strava.com/athletes/22005749/badge" class="w3-margin-left strava-badge- strava-badge-follow" target="_blank"><img src="images/echelon-sprite-24.png" alt="Strava" /></a>
+            </b>
+          </p>
+          <div id="CyclingGoalContent">
+            <div class="w3-container w3-center">
+              <br>
+              <img id="abc" src="images/loading.gif" style="padding: 5px 5px 5px 5px;width:30%"/>
+            </div>
+          </div>
+          <br>
+          <hr>
+          <p class="w3-large">
+            <b>
+              <i class="fa fa-map fa-fw w3-margin-right w3-text-blue"></i>Visited Places
+            </b>
+          </p>
+          <div id="CyclingGoalContent">
+            <div class="w3-container w3-center">
+              <div id="map-wrapper">
+              <div id="map"></div>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    <!-- End Left Column -->
+    </div>
+    <!-- Right Column -->
+    <div class="w3-twothird">
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16">
+          <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Work Experience
+        </h2>
+        <div class="w3-container" id="job-axon-manager">
+          <hr>
+        </div>
+        <div class="w3-container" id="job-axon-staff">
+          <p>
+            Owned all technical software aspects of a linux based camera from concept to production.
+            Defined secure, robust and testable architecture for applications running on the camera
+            as well as interfaces between other products including backend services and mobile apps.
+            This involved working with several deparments across the company as well teams in different
+            geographical locations in North America, Asia and Europe.
+          </p>
+          <p>
+            Worked closely with the company's Information Security department to ensure company's security
+            standards were not only met, but exceeded to design the most secure camera in the industry.
+            This involved designing secure interfaces with all the other products the camera interacted
+            with, getting sign off and then guiding development teams to follow the design.
+          </p>
+          <p>
+            Chose software technologies to aid in the fast development of the camera's software including
+            Protocol Buffers and Go language. Also setup and managed continious integration with "pipeline
+            as code" and "configuration as code" in Jenkins to simplify overhead, provide backup and
+            review of continious integration process.
+          </p>
+          <hr>
+        </div>
+        <div class="w3-container" id="job-axon-senior">
+          <p>
+            Prototyped, designed and implemented custom protocols using standard security technologies for
+            Axon's body worn cameras. These protocols enabled wireless mobile applications on iOS, Android
+            and Windows Phone as well as wired desktop applications on Windows, Linux and MacOS to communicate
+            with Axon's cameras.
+          </p>
+          <p>
+            Ported wireless software applications using Bluetooth and WiFi from virtualized Linux to µITRON
+            for improved performance for various wireless features of Axon Body cameras. This also improved
+            overall camera performance since virtualized Linux environment could then be removed.
+          </p>
+          <p>
+            Managed development environment including branching structure, versioning, and continious integration
+            system for builds, automated tests and software releases. Developed python tooling for interaction
+            with our cameras, outputs of our cameras, continious integration server, data indexer and backend log storage.
+            With this tooling, we could create more complex reports than was possible with the data indexer we were
+            using for field monitoring of product health
+          </p>
+          <hr>
+        </div>
+        <div class="w3-container" id='job-msft-II'>
+          <p>
+            Debugged and fixed various Bluetooth Classic and Bluetooth Low Energy issues on Windows Phone 7, 8 and
+            Windows 8.1. Worked through issues with various Bluetooth protocol layers including HCI, L2CAP, GATT,
+            SDP, RFCOMM, OBEX, OPP, AVCTP, AVRCP, AVDTP, A2DP, HFP, and MAP. Worked on compatibility with various popular
+            Bluetooth devices including car systems, wearables and headsets.
+          </p>
+          <p>
+            Developed an engineering tool to view HCI traces in "real-time" and feed them into decoding software
+            such as Frontline Protocol Analysis System. Also developed a framework to imitate Bluetooth device behaviour
+            to reproduce bugs and simulate edge cases.
+          </p>
+          <hr>
+        </div>
+        <div class="w3-container" id='job-bbry-junior'>
+          <p>
+            Essentially created my own role extending from my earlier internship as a Bluetooth tools developer.
+            I developed a system for cataloging Bluetooth devices based on features that were scanned programmatically
+            using a C++ application.
+          </p>
+          <p>
+            Automated Bluetooth Certification testing through extending an existing framework that already existed at
+            the company to automate user actions on a BlackBerry device. Controlled the execution of certification tests
+            through calling a COM Interface exposed by the Bluetooth Profile Tunning Suite. Previous to this, there was
+            a whole team dedicated to manually running these Certification tests on a regular basis.
+          </p>
+          <hr>
+        </div>
+        <div class="w3-container" id='job-bbry-intern'>
+          <p>
+            Developed applications to assist with engineering processes such as an application that would export test
+            results from a Microsoft Excel Workbook into various QA tools used for reporting.
+          </p>
+          <br>
+        </div>
+      </div>
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16">
+          <i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Education
+        </h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Davenport University</b></h5>
+          <h6 class="w3-text-grey">
+            <i class="w3-text-blue fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015
+          </h6>
+          <p>Information and Computer Security</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Conestoga College</b></h5>
+          <h6 class="w3-text-grey">
+            <i class="w3-text-blue fa fa-calendar fa-fw w3-margin-right"></i>2006 - 2010
+          </h6>
+          <p>Software Engineering</p><br>
+        </div>
+      </div>
+      <div class="w3-container w3-card-2 w3-white">
+        <h2 class="w3-text-grey w3-padding-16">
+          <i class="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Hobbies
+        </h2>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-snowflake-o fa-fw w3-margin-right"></i>
+            <b>Snowboarding</b>
+            <i class="fa fa-snowflake-o fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-motorcycle fa-fw w3-margin-right"></i>
+            <b>Motorcycling</b>
+            <i class="fa fa-motorcycle fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-tint fa-fw w3-margin-right"></i>
+            <b>Kayaking</b>
+            <i class="fa fa-tint fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-truck fa-fw w3-margin-right"></i>
+            <b>Off-Roading</b>
+            <i class="fa fa-truck fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-bicycle fa-fw w3-margin-right"></i>
+            <b>Cycling</b>
+            <i class="fa fa-bicycle fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 w3-hide-medium s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-gamepad fa-fw w3-margin-right"></i>
+            <b>Gaming</b>
+            <i class="fa fa-gamepad fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-paper-plane-o fa-fw w3-margin-right"></i>
+            <b>Paragliding</b>
+            <i class="fa fa-paper-plane-o fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-android fa-fw w3-margin-right"></i>
+            <b>Robotics</b>
+            <i class="fa fa-android fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+        <div class="w3-col w3-center l4 m6 s12">
+          <h6 class="w3-opacity">
+            <i class="fa fa-cutlery fa-fw w3-margin-right"></i>
+            <b>Cooking</b>
+            <i class="fa fa-cutlery fa-fw w3-margin-left"></i>
+          </h6>
+        </div>
+      </div>
+    <!-- End Right Column -->
+    </div>
+  <!-- End Grid -->
+  </div>
+  <!-- End Page Container -->
+</div>
+
+<footer class="w3-container w3-blue w3-center w3-margin-top">
+<p></p>
+</footer>
+
+</body>
+</html>
