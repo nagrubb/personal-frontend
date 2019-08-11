@@ -318,22 +318,27 @@
   }
 
   function fetchStockPrice(quote) {
-    var url = `api/v1/stock/${quote}`;
-    var selector = `[id=${quote}]`;
-
-    var fillFunction = function(selector, price) {
-      var content = `<i class="w3-text-black w3-margin-left"></i><b class="w3-margin-left">${price}</b>`
-      $(selector).html(content);
-    }
-
     $.ajax({
-      url: url,
+      url: `api/v1/stock/${quote}`,
       dataType: 'json',
       success: function(result) {
-        fillFunction(selector, `$${result.closing_price}`);
+        $(`[id=${quote}]`).html(`$${result.closing_price}`);
       },
       error: function() {
-        fillFunction(selector, "N/A");
+        $(`[id=${quote}]`).html("N/A");
+      }
+    });
+  }
+
+  function fetchCurrencyRate(id, from, to, displayPrefix, displayPostfix) {
+    $.ajax({
+      url: `api/v1/currency/${from}/${to}`,
+      dataType: 'json',
+      success: function(result) {
+        $(`[id=${id}]`).html(`${displayPrefix}${result.Rate}${displayPostfix}`);
+      },
+      error: function() {
+        $(`[id=${id}]`).html("N/A");
       }
     });
   }
@@ -409,6 +414,8 @@
       fetchStockPrice("amzn");
       fetchStockPrice("aaxn");
       fetchStockPrice("msft");
+      fetchCurrencyRate("usd-cad", "usd", "cad", "$", " CAD");
+      fetchCurrencyRate("usd-vnd", "usd", "vnd", "", " VNĐ");
 
       $.getJSON('json/visited_countries.geo.json', function(data) {
         createMap('map', data);
