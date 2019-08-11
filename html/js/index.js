@@ -393,7 +393,7 @@
         'job-bbry-junior',
         'Software Engineer',
         'BlackBerry',
-        'Wateroo, ON, Canada',
+        'Waterloo, ON, Canada',
         'https://www.blackberry.com',
         'bbry.png',
         'Jun 2010 - Jan 2012'
@@ -403,7 +403,7 @@
         'job-bbry-intern',
         'Software Engineer Intern',
         'BlackBerry',
-        'Wateroo, ON, Canada',
+        'Waterloo, ON, Canada',
         'https://www.blackberry.com',
         'bbry.png',
         'Apr 2008 - Aug 2009'
