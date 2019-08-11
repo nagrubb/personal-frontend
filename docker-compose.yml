@@ -5,17 +5,14 @@ services:
     image: silentsnowman/resume-website:${TAG}
     ports:
       - "${PORT}:80"
-    depends_on:
-      - cycle
-      - stock
-      - currency
+    restart: unless-stopped
   cycle:
-    image: silentsnowman/cycle-service:${TAG}
-    secrets:
-      - strava_access_token
-    environment:
-      - STRAVA_ACCESS_TOKEN_FILE=/run/secrets/strava_access_token
-      - YEAR_GOAL=900
+   image: silentsnowman/cycle-service:${TAG}
+   secrets:
+     - strava_access_token
+   environment:
+     - STRAVA_ACCESS_TOKEN_FILE=/run/secrets/strava_access_token
+     - YEAR_GOAL=900
   stock:
     image: silentsnowman/stock-service:${TAG}
     secrets:
