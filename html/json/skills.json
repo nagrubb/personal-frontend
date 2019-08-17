@@ -1,0 +1,9 @@
+[
+  {"name":"Linux Development","fluency":90},
+  {"name":"Windows Development","fluency":90},
+  {"name":"C/C++ Programming","fluency":90},
+  {"name":"Python Programming","fluency":90},
+  {"name":"C# Programming","fluency":60},
+  {"name":"Splunk","fluency":30},
+  {"name":"SQL Queries","fluency":20}
+]

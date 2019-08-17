@@ -1,0 +1,7 @@
+[
+  {"type":"stock", "key":"AAXN", "ticker":"AAXN"},
+  {"type":"stock", "key":"MSFT2", "ticker":"MSFT"},
+  {"type":"stock", "key":"AMZN", "ticker":"AMZN"},
+  {"type":"currency", "key":"USD-CAD", "title":"$1 USD", "from":"USD", "to":"CAD", "displayPrefix":"$", "displayPostfix":" CAD"},
+  {"type":"currency", "key":"USD-VND", "title":"$1 USD", "from":"USD", "to":"VND", "displayPrefix":"", "displayPostfix":" VNĐ"}
+]

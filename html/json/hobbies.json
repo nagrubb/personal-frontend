@@ -1,0 +1,39 @@
+[
+  {
+    "name" : "Snowboarding",
+    "icon" : "fa-snowflake-o"
+  },
+  {
+    "name" : "Motorcycling",
+    "icon" : "fa-motorcycle"
+  },
+  {
+    "name" : "Kayaking",
+    "icon" : "fa-tint"
+  },
+  {
+    "name" : "Off-Roading",
+    "icon" : "fa-truck"
+  },
+  {
+    "name" : "Cycling",
+    "icon" : "fa-bicycle"
+  },
+  {
+    "name" : "Gaming",
+    "icon" : "fa-gamepad",
+    "hideMedium" : true
+  },
+  {
+    "name" : "Paragliding",
+    "icon" : "fa-paper-plane-o"
+  },
+  {
+    "name" : "Robotics",
+    "icon" : "fa-android"
+  },
+  {
+    "name" : "Cooking",
+    "icon" : "fa-cutlery"
+  }
+]

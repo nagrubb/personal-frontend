@@ -1,0 +1,22 @@
+[
+  {
+    "name" : "English",
+    "proficiency" : "Fluent",
+    "percentage" : 95
+  },
+  {
+    "name" : "French",
+    "proficiency" : "Conversational",
+    "percentage" : 50
+  },
+  {
+    "name" : "Spanish",
+    "proficiency" : "Basic",
+    "percentage" : 20
+  },
+  {
+    "name" : "Vietnamese",
+    "proficiency" : "Learning",
+    "percentage" : 5
+  }
+]
