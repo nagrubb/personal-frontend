@@ -271,7 +271,7 @@
     }
 
     $.ajax({
-      url: "cycle",
+      url: "api/v1/cycle",
       dataType: 'json',
       success: function(result) {
         fillFunction(result);
@@ -318,22 +318,27 @@
   }
 
   function fetchStockPrice(quote) {
-    var url = `stock/${quote}`;
-    var selector = `[id=${quote}]`;
-
-    var fillFunction = function(selector, price) {
-      var content = `<i class="w3-text-black w3-margin-left"></i><b class="w3-margin-left">${price}</b>`
-      $(selector).html(content);
-    }
-
     $.ajax({
-      url: url,
+      url: `api/v1/stock/${quote}`,
       dataType: 'json',
       success: function(result) {
-        fillFunction(selector, `$${result.closing_price}`);
+        $(`[id=${quote}]`).html(`$${result.closing_price}`);
       },
       error: function() {
-        fillFunction(selector, "");
+        $(`[id=${quote}]`).html("N/A");
+      }
+    });
+  }
+
+  function fetchCurrencyRate(id, from, to, displayPrefix, displayPostfix) {
+    $.ajax({
+      url: `api/v1/currency/${from}/${to}`,
+      dataType: 'json',
+      success: function(result) {
+        $(`[id=${id}]`).html(`${displayPrefix}${result.Rate}${displayPostfix}`);
+      },
+      error: function() {
+        $(`[id=${id}]`).html("N/A");
       }
     });
   }
@@ -388,7 +393,7 @@
         'job-bbry-junior',
         'Software Engineer',
         'BlackBerry',
-        'Wateroo, ON, Canada',
+        'Waterloo, ON, Canada',
         'https://www.blackberry.com',
         'bbry.png',
         'Jun 2010 - Jan 2012'
@@ -398,7 +403,7 @@
         'job-bbry-intern',
         'Software Engineer Intern',
         'BlackBerry',
-        'Wateroo, ON, Canada',
+        'Waterloo, ON, Canada',
         'https://www.blackberry.com',
         'bbry.png',
         'Apr 2008 - Aug 2009'
@@ -406,6 +411,11 @@
 
       //kick off some AJAX calls to fill in some dynamic data
       fetchCyclingGoalData();
+      fetchStockPrice("amzn");
+      fetchStockPrice("aaxn");
+      fetchStockPrice("msft");
+      fetchCurrencyRate("usd-cad", "usd", "cad", "$", " CAD");
+      fetchCurrencyRate("usd-vnd", "usd", "vnd", "", " VNĐ");
 
       $.getJSON('json/visited_countries.geo.json', function(data) {
         createMap('map', data);

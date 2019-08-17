@@ -1,0 +1,34 @@
+version: '3.3'
+services:
+  web:
+    build: .
+    image: silentsnowman/resume-website:${TAG}
+    ports:
+      - "${PORT}:80"
+    restart: unless-stopped
+  cycle:
+   image: silentsnowman/cycle-service:${TAG}
+   secrets:
+     - strava_access_token
+   environment:
+     - STRAVA_ACCESS_TOKEN_FILE=/run/secrets/strava_access_token
+     - YEAR_GOAL=900
+  stock:
+    image: silentsnowman/stock-service:${TAG}
+    secrets:
+      - alpha_vantage_api_key
+    environment:
+      - ALPHA_VANTAGE_API_KEY_FILE=/run/secrets/alpha_vantage_api_key
+  currency:
+    image: silentsnowman/currency-service:${TAG}
+    secrets:
+      - free_currconv_api_key
+    environment:
+      - FREE_CURRCONV_API_KEY_FILE=/run/secrets/free_currconv_api_key
+secrets:
+  strava_access_token:
+    file: strava_access_token.txt
+  alpha_vantage_api_key:
+    file: alpha_vantage_api_key.txt
+  free_currconv_api_key:
+    file: free_currconv_api_key.txt

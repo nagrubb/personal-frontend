@@ -2,6 +2,10 @@ html,body,h1,h2,h3,h4,h5,h6 {
   font-family: "Roboto", sans-serif
 }
 
+h6 {
+  font-size: 14px;
+}
+
 .strava-badge- {
   display: inline-block;
   height: 24px;
@@ -19,7 +23,7 @@ html,body,h1,h2,h3,h4,h5,h6 {
 .strava-badge-follow {
   height: 24px;
   width: 24px;
-  background: url(images/echelon-sprite-24.png) no-repeat 0 0;
+  background: url(../images/echelon-sprite-24.png) no-repeat 0 0;
 }
 
 .pace-wrapper {
@@ -77,4 +81,14 @@ html,body,h1,h2,h3,h4,h5,h6 {
   height:100%;
   position:relative;
   resize:both;
+}
+
+.stock-divider {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 0.5px;
 }
