@@ -13,5 +13,4 @@ COPY package.json /tmp
 COPY jsx /tmp/jsx
 
 RUN cd /tmp && npm install
-RUN cd /tmp && npx browserify -t [ babelify ] /tmp/jsx/index.jsx | npx uglify-js > /usr/share/nginx/html/js/index.js
-
+RUN cd /tmp && npx browserify jsx/index.jsx -t [ babelify ] -g [ envify --NODE_ENV production ] -g uglifyify -o /usr/share/nginx/html/js/index.js
