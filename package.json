@@ -1,7 +1,8 @@
 {
   "name": "resume-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nathan Grubb's Personal Website",
+  "repository": "https://github.com/silent-snowman/resume-website.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
