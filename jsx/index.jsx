@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import QuakeConsole from './component/QuakeConsole.jsx'
 import PictureWithName from './component/PictureWithName.jsx'
 import ContactDetails from './component/ContactDetails.jsx'
 import SkillDetails from './component/SkillDetails.jsx'
@@ -14,29 +15,32 @@ import VisitedPlaces from './component/VisitedPlaces.jsx'
 class ResumePage extends React.Component {
   render() {
     return (
-      <div className="w3-content w3-margin-top" style={{"maxWidth": "1400px"}}>
-        <div className="w3-row-padding">
-          <div className="w3-third">
-            <div className="w3-white w3-text-grey w3-card-4" >
-              <PictureWithName />
-              <div className="w3-container">
-                <ContactDetails />
-                <hr />
-                <SkillDetails />
-                <hr />
-                <Languages />
-                <hr />
-                <FinanceDetails />
-                <CyclingGoals />
-                <hr />
-                <VisitedPlaces />
+      <div>
+        <QuakeConsole />
+        <div className="w3-content w3-margin-top" style={{"maxWidth": "1400px"}}>
+          <div className="w3-row-padding">
+            <div className="w3-third">
+              <div className="w3-white w3-text-grey w3-card-4" >
+                <PictureWithName />
+                <div className="w3-container">
+                  <ContactDetails />
+                  <hr />
+                  <SkillDetails />
+                  <hr />
+                  <Languages />
+                  <hr />
+                  <FinanceDetails />
+                  <CyclingGoals />
+                  <hr />
+                  <VisitedPlaces />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="w3-twothird">
-            <WorkExperience />
-            <Education />
-            <Hobbies />
+            <div className="w3-twothird">
+              <WorkExperience />
+              <Education />
+              <Hobbies />
+            </div>
           </div>
         </div>
       </div>
