@@ -13,7 +13,7 @@ export default class QuakeConsole extends React.Component {
   constructor(props) {
     super(props);
     this.terminalRef = React.createRef();
-    this.state = { showConsole: true };
+    this.state = { showConsole: false };
     this.toggleConsole = this.toggleConsole.bind(this);
     this.exitConsole = this.exitConsole.bind(this);
     this.customState = EmulatorState.create({
