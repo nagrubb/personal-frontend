@@ -1,7 +1,11 @@
 version: '3.3'
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        npm_build_args: ""
     image: silentsnowman/resume-website:${TAG}
     ports:
       - "${PORT}:80"
