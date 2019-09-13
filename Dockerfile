@@ -1,4 +1,5 @@
 FROM nginx:latest
+ARG npm_build_args="-g [ envify --NODE_ENV production ] -g uglifyify"
 MAINTAINER Nathan Grubb "me@nathangrubb.io"
 
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -24,4 +25,4 @@ COPY package.json /tmp
 COPY jsx /tmp/jsx
 
 RUN cd /tmp && npm install
-RUN cd /tmp && npx browserify jsx/index.jsx -t [ babelify ] -g [ envify --NODE_ENV production ] -g uglifyify -o /usr/share/nginx/html/js/index.js
+RUN cd /tmp && npx browserify jsx/index.jsx -t [ babelify ] $npm_build_args -o /usr/share/nginx/html/js/index.js
