@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import ReactTerminal, { ReactOutputRenderers, ReactThemes } from 'react-terminal-component';
 import {
   CommandMapping, OutputFactory, OutputType, EmulatorState,

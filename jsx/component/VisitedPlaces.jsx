@@ -1,12 +1,11 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class VisitedPlaces extends React.Component {
+export default class VisitedPlaces extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
       data: []
     };
   }
@@ -25,14 +24,12 @@ export default class VisitedPlaces extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
             data: result
           });
           this.createMap('map', result);
         },
         (error) => {
           this.setState({
-            isLoaded: true,
             error
           });
         }
@@ -89,7 +86,7 @@ export default class VisitedPlaces extends React.Component {
 
     function style(feature) {
       var color = "";
-      
+
       if (feature.properties.visited) {
         color = "#2196F3";
       } else {
@@ -137,7 +134,7 @@ export default class VisitedPlaces extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, skills } = this.state;
+    const { error, skills } = this.state;
     var header = (
       <div>
         <p className="w3-large">
@@ -155,21 +152,6 @@ export default class VisitedPlaces extends React.Component {
           <br />
           <div className="w3-container w3-center">
             <h5>Error: {error}</h5>
-          </div>
-          <br />
-        </div>
-      );
-    } else if (!isLoaded) {
-      return (
-        <div>
-          {header}
-          <br />
-          <div id="VisitedPlacesMap">
-            <div className="w3-container w3-center">
-              <div id="map-wrapper">
-                <div id="map"></div>
-              </div>
-            </div>
           </div>
           <br />
         </div>
