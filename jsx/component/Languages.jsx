@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 export default class Languages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       languages: []
     };
   }
@@ -17,39 +18,43 @@ export default class Languages extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             languages: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            loaded: true,
+            error: error.message
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, languages } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
+    const { error, loaded, languages } = this.state;
+
+    let renderedLanguages;
+    if (!loaded) {
+      renderedLanguages = <LoadingSpinner />;
+    } else if (error) {
+      renderedLanguages = <div>Error: {error}</div>;
     } else {
-      return (
-        <div>
-          <p className="w3-large">
-            <b>
-              <i className="fa fa-language fa-fw w3-margin-right w3-text-blue"></i>Languages
-            </b>
-          </p>
-          {languages.map((language, index) => (
-            <Language key={index} info={language} />
-          ))}
-        </div>
-      );
+      renderedLanguages = languages.map((language, index) => (
+        <Language key={index} info={language} />
+      ));
     }
+
+    return (
+      <div>
+        <p className="w3-large">
+          <b>
+            <i className="fa fa-language fa-fw w3-margin-right w3-text-blue"></i>Languages
+          </b>
+        </p>
+        {renderedLanguages}
+      </div>
+    );
   }
 }
 

@@ -6,7 +6,7 @@ export default class CyclingGoals extends React.Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       rideData: {}
     };
   }
@@ -25,13 +25,13 @@ export default class CyclingGoals extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             rideData: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             error
           });
         }
@@ -39,7 +39,7 @@ export default class CyclingGoals extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, rideData } = this.state;
+    const { error, loaded, rideData } = this.state;
     var header = (
       <div>
         <p className="w3-large">
@@ -62,7 +62,7 @@ export default class CyclingGoals extends React.Component {
           <br />
         </div>
       );
-    } else if (!isLoaded) {
+    } else if (!loaded) {
       return (
         <div>
           {header}

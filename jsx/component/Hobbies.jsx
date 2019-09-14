@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 export default class Hobbies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       hobbies: []
     };
   }
@@ -17,37 +18,41 @@ export default class Hobbies extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             hobbies: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            loaded: true,
+            error: error.message
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, hobbies } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
+    const { error, loaded, hobbies } = this.state;
+
+    let renderedHobbies;
+    if (!loaded) {
+      renderedHobbies = <LoadingSpinner />;
+    } else if (error) {
+      renderedHobbies = <div>Error: {error}</div>;
     } else {
-      return (
-        <div className="w3-container w3-card-2 w3-white">
-          <h2 className="w3-text-grey w3-padding-16">
-            <i className="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Hobbies
-          </h2>
-          {hobbies.map((hobby, index) => (
-            <Hobby key={index} info={hobby} />
-          ))}
-        </div>
-      );
+      renderedHobbies = hobbies.map((hobby, index) => (
+        <Hobby key={index} info={hobby} />
+      ));
     }
+
+    return (
+      <div className="w3-container w3-card-2 w3-white">
+        <h2 className="w3-text-grey w3-padding-16">
+          <i className="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Hobbies
+        </h2>
+        {renderedHobbies}
+      </div>
+    );
   }
 }
 

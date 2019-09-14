@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 export default class Education extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       credentials: []
     };
   }
@@ -17,37 +18,41 @@ export default class Education extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             credentials: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            loaded: true,
+            error: error.message
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, credentials } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
+    const { error, loaded, credentials } = this.state;
+
+    let renderedEducation;
+    if (!loaded) {
+      renderedEducation = <LoadingSpinner />;
+    } else if (error) {
+      renderedEducation = <div>Error: {error}</div>;
     } else {
-      return (
-        <div className="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 className="w3-text-grey w3-padding-16">
-            <i className="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Education
-          </h2>
-          {credentials.map((credential, index) => (
-            <Credential key={index} info={credential} isLast={index == credentials.length - 1} />
-          ))}
-        </div>
-      );
+      renderedEducation = credentials.map((credential, index) => (
+        <Credential key={index} info={credential} isLast={index == credentials.length - 1} />
+      ))
     }
+
+    return (
+      <div className="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 className="w3-text-grey w3-padding-16">
+          <i className="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Education
+        </h2>
+        {renderedEducation}
+      </div>
+    );
   }
 }
 

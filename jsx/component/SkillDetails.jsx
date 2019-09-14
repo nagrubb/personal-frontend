@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class SkillDetails extends React.Component {
+export default class SkillDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       skills: []
     };
   }
@@ -17,39 +18,43 @@ export default class SkillDetails extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             skills: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            loaded: true,
+            error: error.message
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, skills } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
+    const { error, loaded, skills } = this.state;
+
+    let renderedSkills;
+    if (!loaded) {
+      renderedSkills = <LoadingSpinner />;
+    } else if (error) {
+      renderedSkills = <div>Error: {error}</div>;
     } else {
-      return (
-        <div>
-          <p className="w3-large"><b><i className="fa fa-asterisk fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
-          {skills.map(skill => (
-            <Skill key={skill.name} name={skill.name} fluency={skill.fluency}/>
-          ))}
-        </div>
-      );
+      renderedSkills = skills.map(skill => (
+        <Skill key={skill.name} name={skill.name} fluency={skill.fluency}/>
+      ));
     }
+
+    return (
+      <div>
+        <p className="w3-large"><b><i className="fa fa-asterisk fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
+        {renderedSkills}
+      </div>
+    );
   }
 }
 
-class Skill extends React.Component {
+class Skill extends Component {
   render() {
     return (
       <div>
