@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class FinanceDetails extends React.Component {
+export default class FinanceDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ export default class FinanceDetails extends React.Component {
   }
 }
 
-class Quote extends React.Component {
+class Quote extends Component {
   constructor(props) {
     super(props);
     this.state = {

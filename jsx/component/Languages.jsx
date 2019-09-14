@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class Languages extends React.Component {
+export default class Languages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,7 +58,7 @@ export default class Languages extends React.Component {
   }
 }
 
-class Language extends React.Component {
+class Language extends Component {
   render() {
     return (
       <div>

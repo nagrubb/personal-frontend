@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class Education extends React.Component {
+export default class Education extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ export default class Education extends React.Component {
   }
 }
 
-class Credential extends React.Component {
+class Credential extends Component {
   render() {
     return (
       <div className="w3-container">

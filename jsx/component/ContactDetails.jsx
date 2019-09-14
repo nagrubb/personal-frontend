@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class ContactDetails extends React.Component {
+export default class ContactDetails extends Component {
   render() {
     return (
       <div>

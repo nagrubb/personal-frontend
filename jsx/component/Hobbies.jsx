@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class Hobbies extends React.Component {
+export default class Hobbies extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ export default class Hobbies extends React.Component {
   }
 }
 
-class Hobby extends React.Component {
+class Hobby extends Component {
   render() {
     var classes = "w3-col w3-center l4 m6 s12";
 

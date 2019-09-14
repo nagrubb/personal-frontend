@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import QuakeConsole from './component/QuakeConsole.jsx'
 import PictureWithName from './component/PictureWithName.jsx'
@@ -21,7 +21,7 @@ window.onkeydown = function(e) {
   }
 }
 
-class ResumePage extends React.Component {
+class ResumePage extends Component {
   constructor(props) {
     super(props);
     this.terminalRef = null;

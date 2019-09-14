@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class CyclingGoals extends React.Component {
+export default class CyclingGoals extends Component {
   constructor(props) {
     super(props);
     this.state = {
