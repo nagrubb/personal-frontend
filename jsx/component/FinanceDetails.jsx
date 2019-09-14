@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class FinanceDetails extends React.Component {
+export default class FinanceDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       finances: []
     };
   }
@@ -17,52 +18,56 @@ export default class FinanceDetails extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             finances: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            loaded: true,
+            error: error.message
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, finances } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
+    const { error, loaded, finances } = this.state;
+
+    let renderedFinances;
+    if (!loaded) {
+      renderedFinances = <LoadingSpinner />;
+    } else if (error) {
+      renderedFinances = <div>Error: {error}</div>;
     } else {
-      return (
-        <div>
-          <p className="w3-large">
-            <b>
-              <i className="fa fa-dollar fa-fw w3-margin-right w3-text-blue"></i>Finance
-            </b>
-          </p>
-          {finances.map(finance => (
-            <div key={finance.key}>
-              <div className="stock-divider"></div>
-              <Quote info={finance} />
-            </div>
-          ))}
+      renderedFinances = finances.map(finance => (
+        <div key={finance.key}>
           <div className="stock-divider"></div>
+          <Quote info={finance} />
         </div>
-      );
+      ));
     }
+
+    return (
+      <div>
+        <p className="w3-large">
+          <b>
+            <i className="fa fa-dollar fa-fw w3-margin-right w3-text-blue"></i>Finance
+          </b>
+        </p>
+        {renderedFinances}
+        <div className="stock-divider"></div>
+      </div>
+    );
   }
 }
 
-class Quote extends React.Component {
+class Quote extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loaded: false,
       quote: null
     };
     if (this.props.info.type == 'stock') {
@@ -78,13 +83,13 @@ class Quote extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             quote: result
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
+            loaded: true,
             error
           });
         }
@@ -92,10 +97,10 @@ class Quote extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, quote } = this.state;
+    const { error, loaded, quote } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    } else if (!loaded) {
       if (this.props.info.type == 'stock') {
         return (
           <h6>{this.props.info.ticker}<span id={this.props.ticker} className="w3-right"><i className="fa fa-spinner fa-spin"></i></span></h6>
