@@ -1,0 +1,78 @@
+[
+  {
+    "title" : "Software Engineering Manager",
+    "company" : "Axon",
+    "location" : "HCMC, Vietnam",
+    "companyWebsite" : "https:///www.axon.com",
+    "logo" : "images/axon.png",
+    "current" : true,
+    "startDate" : "May 2019",
+    "description" : []
+  },
+  {
+    "title" : "Staff Software Engineer",
+    "company" : "Axon",
+    "location" : "Seattle, WA, USA",
+    "companyWebsite" : "https:///www.axon.com",
+    "logo" : "images/axon.png",
+    "startDate" : "Jan 2019",
+    "endDate" : "May 2019",
+    "description" : [
+      "Owned all technical software aspects of a linux based camera from concept to production. Defined secure, robust and testable architecture for applications running on the camera as well as interfaces between other products including backend services and mobile apps. This involved working with several deparments across the company as well teams in different geographical locations in North America, Asia and Europe.",
+      "Worked closely with the company's Information Security department to ensure company's security standards were not only met, but exceeded to design the most secure camera in the industry. This involved designing secure interfaces with all the other products the camera interacted with, getting sign off and then guiding development teams to follow the design.",
+      "Chose software technologies to aid in the fast development of the camera's software including Protocol Buffers and Go language. Also setup and managed continious integration with \"pipeline as code\" and \"configuration as code\" in Jenkins to simplify overhead, provide backup and review of continious integration process."
+    ]
+  },
+  {
+    "title" : "Senior Software Engineer",
+    "company" : "Axon",
+    "location" : "Seattle, WA, USA",
+    "companyWebsite" : "https:///www.axon.com",
+    "logo" : "images/axon.png",
+    "startDate" : "Feb 2015",
+    "endDate" : "Dec 2018",
+    "description" : [
+      "Prototyped, designed and implemented custom protocols using standard security technologies for Axon's body worn cameras. These protocols enabled wireless mobile applications on iOS, Android and Windows Phone as well as wired desktop applications on Windows, Linux and MacOS to communicate with Axon's cameras.",
+      "Ported wireless software applications using Bluetooth and WiFi from virtualized Linux to µITRON for improved performance for various wireless features of Axon Body cameras. This also improved overall camera performance since virtualized Linux environment could then be removed.",
+      "Managed development environment including branching structure, versioning, and continious integration system for builds, automated tests and software releases. Developed python tooling for interaction with our cameras, outputs of our cameras, continious integration server, data indexer and backend log storage. With this tooling, we could create more complex reports than was possible with the data indexer we were using for field monitoring of product health"
+    ]
+  },
+  {
+    "title" : "Software Engineer II",
+    "company" : "Microsoft",
+    "location" : "Redmond, WA, USA",
+    "companyWebsite" : "https://www.microsoft.com",
+    "logo" : "images/msft.png",
+    "startDate" : "Jan 2012",
+    "endDate" : "Feb 2015",
+    "description" : [
+      "Debugged and fixed various Bluetooth Classic and Bluetooth Low Energy issues on Windows Phone 7, 8 and Windows 8.1. Worked through issues with various Bluetooth protocol layers including HCI, L2CAP, GATT, SDP, RFCOMM, OBEX, OPP, AVCTP, AVRCP, AVDTP, A2DP, HFP, and MAP. Worked on compatibility with various popular Bluetooth devices including car systems, wearables and headsets.",
+      "Developed an engineering tool to view HCI traces in \"real-time\" and feed them into decoding software such as Frontline Protocol Analysis System. Also developed a framework to imitate Bluetooth device behaviour to reproduce bugs and simulate edge cases."
+    ]
+  },
+  {
+    "title" : "Software Engineer",
+    "company" : "BlackBerry",
+    "location" : "Waterloo, ON, Canada",
+    "companyWebsite" : "https://www.blackberry.com",
+    "logo" : "images/bbry.png",
+    "startDate" : "Jun 2010",
+    "endDate" : "Jan 2012",
+    "description" : [
+      "Essentially created my own role extending from my earlier internship as a Bluetooth tools developer. I developed a system for cataloging Bluetooth devices based on features that were scanned programmatically using a C++ application.",
+      "Automated Bluetooth Certification testing through extending an existing framework that already existed at the company to automate user actions on a BlackBerry device. Controlled the execution of certification tests through calling a COM Interface exposed by the Bluetooth Profile Tunning Suite. Previous to this, there was a whole team dedicated to manually running these Certification tests on a regular basis."
+    ]
+  },
+  {
+    "title" : "Software Engineer Intern",
+    "company" : "BlackBerry",
+    "location" : "Waterloo, ON, Canada",
+    "companyWebsite" : "https://www.blackberry.com",
+    "logo" : "images/bbry.png",
+    "startDate" : "Apr 2008",
+    "endDate" : "Aug 2009",
+    "description" : [
+      "Developed applications to assist with engineering processes such as an application that would export test results from a Microsoft Excel Workbook into various QA tools used for reporting."
+    ]
+  }
+]

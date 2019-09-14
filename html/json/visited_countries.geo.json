@@ -41271,7 +41271,8 @@
       "type": "Feature",
       "id": "TWN",
       "properties": {
-        "name": "Taiwan"
+        "name": "Taiwan",
+        "visited": true
       },
       "geometry": {
         "type": "Polygon",
