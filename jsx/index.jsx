@@ -11,7 +11,6 @@ import Education from './component/Education.jsx'
 import Hobbies from './component/Hobbies.jsx'
 import CyclingGoals from './component/CyclingGoals.jsx'
 import VisitedPlaces from './component/VisitedPlaces.jsx'
-import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
 window.onkeydown = function(e) {
   if (globalApp && globalApp.terminalRef) {
