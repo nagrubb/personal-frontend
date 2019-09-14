@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import ReactTerminal, { ReactOutputRenderers, ReactThemes } from 'react-terminal-component';
 import {
@@ -9,7 +9,7 @@ import {
 import {Animated} from "react-animated-css";
 
 
-export default class QuakeConsole extends React.Component {
+export default class QuakeConsole extends Component {
   constructor(props) {
     super(props);
     this.terminalRef = React.createRef();
@@ -27,12 +27,6 @@ export default class QuakeConsole extends React.Component {
     });
   }
 
-  componentDidMount() {
-    if (this.terminalRef && this.terminalRef.inputRef) {
-      this.terminalRef.inputRef.focus();
-    }
-  }
-
   render() {
     const { showConsole } = this.state;
     var displayStyle = {
@@ -42,15 +36,9 @@ export default class QuakeConsole extends React.Component {
 
     return (
       <React.Fragment>
-        <KeyHandler
-          keyEventName={KEYPRESS}
-          keyValue="`"
-          onKeyHandle={this.toggleConsole}
-        />
         <div id="console" className="tilda" style={displayStyle}>
         <Animated animationIn="slideInDown" animationOut="slideOutUp" animationInDuration={500} animationOutDuration={500} isVisible={showConsole} animateOnMount={false}>
           <ReactTerminal
-            ref={this.terminalRef}
             theme={ReactThemes.hacker}
             outputRenderers={{
               ...ReactOutputRenderers
@@ -69,7 +57,6 @@ export default class QuakeConsole extends React.Component {
   }
 
   toggleConsole(event) {
-    event.preventDefault();
     this.setState({ showConsole: !this.state.showConsole });
   }
 }
