@@ -12,11 +12,25 @@ import Hobbies from './component/Hobbies.jsx'
 import CyclingGoals from './component/CyclingGoals.jsx'
 import VisitedPlaces from './component/VisitedPlaces.jsx'
 
+window.onkeydown = function(e) {
+  if (globalApp && globalApp.terminalRef) {
+    if (e.code == "Backquote") {
+      e.preventDefault();
+      globalApp.terminalRef.toggleConsole();
+    }
+  }
+}
+
 class ResumePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.terminalRef = null;
+  }
+
   render() {
     return (
       <div>
-        <QuakeConsole />
+        <QuakeConsole ref={(input) => { this.terminalRef = input; }} />
         <div className="w3-content w3-margin-top" style={{"maxWidth": "1400px"}}>
           <div className="w3-row-padding">
             <div className="w3-third">
@@ -48,7 +62,7 @@ class ResumePage extends React.Component {
   }
 }
 
-ReactDOM.render(
+var globalApp = ReactDOM.render(
   <ResumePage />,
   document.getElementById('root')
 );
