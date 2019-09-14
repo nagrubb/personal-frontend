@@ -34,7 +34,19 @@ export default class QuakeConsole extends Component {
       <div id="console" className="tilda" style={displayStyle}>
         <Animated animationIn="slideInDown" animationOut="slideOutUp" animationInDuration={500} animationOutDuration={500} isVisible={showConsole} animateOnMount={false}>
           <ReactTerminal
-            theme={ReactThemes.hacker}
+            theme={{
+              background: '#141313',
+              promptSymbolColor: '#2196f3',
+              commandColor: '#fcfcfc',
+              outputColor: '#fcfcfc',
+              errorOutputColor: '#fcfcfc',
+              fontSize: '0.8rem',
+              spacing: '1%',
+              fontFamily: 'monospace',
+              width: '100%',
+              height: '50vh'
+            }}
+            promptSymbol="ninja />"
             outputRenderers={{
               ...ReactOutputRenderers
             }}
