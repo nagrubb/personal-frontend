@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class PictureWithName extends React.Component {
+export default class PictureWithName extends Component {
   render() {
     return (
       <div className="w3-display-container">
