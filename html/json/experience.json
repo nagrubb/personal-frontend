@@ -18,7 +18,7 @@
     "startDate" : "Jan 2019",
     "endDate" : "May 2019",
     "description" : [
-      "Owned all technical software aspects of a linux based camera from concept to production. Defined secure, robust and testable architecture for applications running on the camera as well as interfaces between other products including backend services and mobile apps. This involved working with several deparments across the company as well teams in different geographical locations in North America, Asia and Europe.",
+      "Owned all technical software aspects of a Linux based camera from concept to production. Defined secure, robust and testable architecture for applications running on the camera as well as interfaces between other products including backend services and mobile applications. This involved working with several deparments across the company as well teams in different geographical locations in North America, Asia and Europe.",
       "Worked closely with the company's Information Security department to ensure company's security standards were not only met, but exceeded to design the most secure camera in the industry. This involved designing secure interfaces with all the other products the camera interacted with, getting sign off and then guiding development teams to follow the design.",
       "Chose software technologies to aid in the fast development of the camera's software including Protocol Buffers and Go language. Also setup and managed continious integration with \"pipeline as code\" and \"configuration as code\" in Jenkins to simplify overhead, provide backup and review of continious integration process."
     ]
