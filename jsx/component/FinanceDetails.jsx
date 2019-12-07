@@ -52,7 +52,7 @@ export default class FinanceDetails extends Component {
       <div>
         <p className="w3-large">
           <b>
-            <i className="fa fa-dollar fa-fw w3-margin-right w3-text-blue"></i>Finance
+            <i className="fa fa-landmark fa-fw w3-margin-right w3-text-blue"></i>Finance
           </b>
         </p>
         {renderedFinances}

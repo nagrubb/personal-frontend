@@ -62,7 +62,7 @@ class Credential extends Component {
       <div className="w3-container">
         <h5 className="w3-opacity"><b>{this.props.info.institution}</b></h5>
         <h6 className="w3-text-grey">
-          <i className="w3-text-blue fa fa-calendar fa-fw w3-margin-right"></i>{this.props.info.startDate} - {this.props.info.endDate}
+          <i className="w3-text-blue fa fa-calendar-alt fa-fw w3-margin-right"></i>{this.props.info.startDate} - {this.props.info.endDate}
         </h6>
         <p>{this.props.info.degree}</p>
         {this.props.isLast ? (<br/>) : (<hr/>)}

@@ -1,7 +1,7 @@
 [
   {
     "name" : "Snowboarding",
-    "icon" : "fa-snowflake-o"
+    "icon" : "fa-snowflake"
   },
   {
     "name" : "Motorcycling",
@@ -26,14 +26,14 @@
   },
   {
     "name" : "Paragliding",
-    "icon" : "fa-paper-plane-o"
+    "icon" : "fa-paper-plane"
   },
   {
     "name" : "Robotics",
-    "icon" : "fa-android"
+    "icon" : "fa-robot"
   },
   {
     "name" : "Cooking",
-    "icon" : "fa-cutlery"
+    "icon" : "fa-pepper-hot"
   }
 ]

@@ -48,7 +48,7 @@ export default class WorkExperience extends Component {
     return (
       <div className="w3-container w3-card-2 w3-white w3-margin-bottom">
         <h2 className="w3-text-grey w3-padding-16">
-          <i className="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Work Experience
+          <i className="fa fa-building fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Work Experience
         </h2>
         {renderedExperience}
       </div>
@@ -81,13 +81,13 @@ class Job extends Component {
           </div>
         </h5>
         <h6 className="w3-text-grey w3-hide-small w3-hide-medium">
-          <i className="w3-text-blue fa fa-calendar fa-fw w3-margin-right"></i>{duration}
-          <i className="w3-right w3-text-blue fa fa-map fa-fw w3-margin-left"></i>
+          <i className="w3-text-blue fa fa-calendar-alt fa-fw w3-margin-right"></i>{duration}
+          <i className="w3-right w3-text-blue fa fa-map-marked fa-fw w3-margin-left"></i>
           <span className="w3-right">{this.props.job.location}</span>
         </h6>
         <h6 className="w3-text-grey w3-hide-large">
-          <div><i className="w3-text-blue fa fa-map fa-fw w3-margin-right"></i>{this.props.job.location}</div>
-          <div><i className="w3-text-blue fa fa-calendar fa-fw w3-margin-right"></i>{duration}</div>
+          <div><i className="w3-text-blue fa fa-map-marked fa-fw w3-margin-right"></i>{this.props.job.location}</div>
+          <div><i className="w3-text-blue fa fa-calendar-alt fa-fw w3-margin-right"></i>{duration}</div>
         </h6>
         {this.props.job.description.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>

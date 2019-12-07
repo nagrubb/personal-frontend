@@ -47,7 +47,7 @@ export default class SkillDetails extends Component {
 
     return (
       <div>
-        <p className="w3-large"><b><i className="fa fa-asterisk fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
+        <p className="w3-large"><b><i className="fa fa-user-secret fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
         {renderedSkills}
       </div>
     );
