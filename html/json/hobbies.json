@@ -1,7 +1,7 @@
 [
   {
     "name" : "Snowboarding",
-    "icon" : "fa-snowflake"
+    "icon" : "fa-snowboarding"
   },
   {
     "name" : "Motorcycling",
@@ -9,11 +9,11 @@
   },
   {
     "name" : "Kayaking",
-    "icon" : "fa-tint"
+    "icon" : "fa-water"
   },
   {
     "name" : "Off-Roading",
-    "icon" : "fa-truck"
+    "icon" : "fa-truck-monster"
   },
   {
     "name" : "Cycling",
