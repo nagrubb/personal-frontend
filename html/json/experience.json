@@ -26,8 +26,8 @@
   {
     "title" : "Senior Software Engineer",
     "company" : "Axon",
-    "location" : "Seattle, WA, USA",
     "companyWebsite" : "https:///www.axon.com",
+    "location" : "Seattle, WA, USA",
     "logo" : "images/axon.png",
     "startDate" : "Feb 2015",
     "endDate" : "Dec 2018",
@@ -40,9 +40,9 @@
   {
     "title" : "Software Engineer II",
     "company" : "Microsoft",
-    "location" : "Redmond, WA, USA",
     "companyWebsite" : "https://www.microsoft.com",
-    "logo" : "images/msft.png",
+    "location" : "Redmond, WA, USA",
+    "logoIcon" : "fab fa-microsoft",
     "startDate" : "Jan 2012",
     "endDate" : "Feb 2015",
     "description" : [
@@ -53,9 +53,9 @@
   {
     "title" : "Software Engineer",
     "company" : "BlackBerry",
-    "location" : "Waterloo, ON, Canada",
     "companyWebsite" : "https://www.blackberry.com",
-    "logo" : "images/bbry.png",
+    "location" : "Waterloo, ON, Canada",
+    "logoIcon" : "fab fa-blackberry",
     "startDate" : "Jun 2010",
     "endDate" : "Jan 2012",
     "description" : [
@@ -66,9 +66,9 @@
   {
     "title" : "Software Engineer Intern",
     "company" : "BlackBerry",
-    "location" : "Waterloo, ON, Canada",
     "companyWebsite" : "https://www.blackberry.com",
-    "logo" : "images/bbry.png",
+    "location" : "Waterloo, ON, Canada",
+    "logoIcon" : "fab fa-blackberry",
     "startDate" : "Apr 2008",
     "endDate" : "Aug 2009",
     "description" : [

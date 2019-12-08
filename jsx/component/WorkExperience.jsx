@@ -59,6 +59,7 @@ export default class WorkExperience extends Component {
 class Job extends Component {
   render() {
     var duration = "";
+    var logo = "";
 
     if (this.props.job.current) {
       duration = <span>{this.props.job.startDate} - <span className="w3-tag w3-blue w3-round">Current</span></span>;
@@ -66,12 +67,19 @@ class Job extends Component {
       duration = `${this.props.job.startDate} - ${this.props.job.endDate}`;
     }
 
+    if (this.props.job.logoIcon) {
+      this.props.job.logoIcon += " w3-margin-left";
+      logo = <i className={`${this.props.job.logoIcon}`} />;
+    } else {
+      logo = <img src={`${this.props.job.logo}`} className="w3-margin-left" style={{width:"20px"}} />;
+    }
+
     return (
       <div className="w3-container">
         <h5 className="w3-opacity">
           <div className="w3-hide-small w3-hide-medium">
             <b>{this.props.job.title} / <a href={`${this.props.job.companyWebsite}`}>{this.props.job.company}</a></b>
-            <img src={`${this.props.job.logo}`} className="w3-margin-left" style={{width:"20px"}}/>
+            {logo}
           </div>
           <div className="w3-hide-large">
             <b>{this.props.job.title}</b>
