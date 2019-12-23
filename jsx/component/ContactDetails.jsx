@@ -8,7 +8,7 @@ export default class ContactDetails extends Component {
         <p><i className="fa fa-passport fa-fw w3-margin-right w3-large w3-text-blue"></i>Nathan Grubb</p>
         <p><i className="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>Engineering Manager</p>
         <p><i className="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Ho Chi Minh City, Vietnam</p>
-        <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i><a href="mailto:me@nathangrubb.io">me@nathangrubb.io</a></p>
+        <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i><a href="mailto:nate@nathangrubb.io">me@nathangrubb.io</a></p>
         <p><i className="fa fa-phone-alt fa-fw w3-margin-right w3-large w3-text-blue"></i>(***) ***-****</p>
         <p>
           <a href="https://www.facebook.com/ngrubb2"><i style={{padding: "4px" }} className="fab fa-facebook fa-2x w3-hover-opacity w3-text-blue"></i></a>
