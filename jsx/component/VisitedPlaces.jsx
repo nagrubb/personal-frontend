@@ -139,7 +139,7 @@ export default class VisitedPlaces extends Component {
       <div>
         <p className="w3-large">
           <b>
-            <i className="fa fa-map fa-fw w3-margin-right w3-text-blue"></i>Visited Places
+            <i className="fa fa-globe-americas fa-fw w3-margin-right w3-text-blue"></i>Visited Places
           </b>
         </p>
       </div>

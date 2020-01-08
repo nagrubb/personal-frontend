@@ -48,7 +48,7 @@ export default class Hobbies extends Component {
     return (
       <div className="w3-container w3-card-2 w3-white">
         <h2 className="w3-text-grey w3-padding-16">
-          <i className="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Hobbies
+          <i className="fa fa-moon fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Hobbies
         </h2>
         {renderedHobbies}
       </div>
