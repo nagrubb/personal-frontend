@@ -5,7 +5,7 @@ export default class PictureWithName extends Component {
   render() {
     return (
       <div className="w3-display-container">
-        <img src="images/profile.png" style={{width: '100%'}} alt="Nathan Grubb" />
+        <img src="images/profile.jpg" style={{width: '100%'}} alt="Nathan Grubb" />
       </div>
     )
   }
