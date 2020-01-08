@@ -7,7 +7,7 @@ export default class ContactDetails extends Component {
       <div>
         <p><i className="fa fa-passport fa-fw w3-margin-right w3-large w3-text-blue"></i>Nathan Grubb</p>
         <p><i className="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>Engineering Manager</p>
-        <p><i className="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Ho Chi Minh City, Vietnam</p>
+        <p><i className="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Hồ Chí Minh, Việt Nam</p>
         <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i><a href="mailto:nate@nathangrubb.io">nate@nathangrubb.io</a></p>
         <p><i className="fa fa-phone-alt fa-fw w3-margin-right w3-large w3-text-blue"></i>(***) ***-****</p>
         <p>
