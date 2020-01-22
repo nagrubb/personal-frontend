@@ -14,21 +14,22 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
     "envify": "^4.1.0",
-    "uglify-js": "^3.6.0",
+    "uglify-js": "^3.7.6",
     "uglifyify": "^5.0.1"
   },
   "dependencies": {
-    "react": "^16.9.0",
+    "@material-ui/core": "^4.8.3",
+    "react": "^16.12.0",
     "react-animated-css": "^1.2.1",
-    "react-console-emulator": "^3.0.2",
-    "react-dom": "^16.9.0",
+    "react-console-emulator": "^3.0.4",
+    "react-dom": "^16.12.0",
     "react-terminal-component": "^1.4.1"
   },
   "bugs": {
