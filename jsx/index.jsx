@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import QuakeConsole from './component/QuakeConsole.jsx'
 import PictureWithName from './component/PictureWithName.jsx'
 import ContactDetails from './component/ContactDetails.jsx'
@@ -21,6 +25,21 @@ window.onkeydown = function(e) {
   }
 }
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  main: {
+    padding: theme.spacing(2),
+    background: '#f1f1f1',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 class ResumePage extends Component {
   constructor(props) {
     super(props);
@@ -28,12 +47,12 @@ class ResumePage extends Component {
   }
 
   render() {
+    const classes = useStyles();
     return (
-      <div>
-        <QuakeConsole ref={(input) => { this.terminalRef = input; }} />
-        <div className="w3-content w3-margin-top" style={{"maxWidth": "1400px"}}>
-          <div className="w3-row-padding">
-            <div className="w3-third">
+      <Container className={classes.main}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={4}>
+            <Paper className={classes.paper}>
               <div className="w3-white w3-text-grey w3-card-4" >
                 <PictureWithName />
                 <div className="w3-container">
@@ -49,15 +68,17 @@ class ResumePage extends Component {
                   <VisitedPlaces />
                 </div>
               </div>
-            </div>
-            <div className="w3-twothird">
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={8}>
+            <Paper className={classes.paper}>
               <WorkExperience />
               <Education />
               <Hobbies />
-            </div>
-          </div>
-        </div>
-      </div>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
     )
   }
 }
