@@ -25,6 +25,10 @@
     "uglifyify": "^5.0.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@material-ui/core": "^4.8.3",
     "react": "^16.12.0",
     "react-animated-css": "^1.2.1",

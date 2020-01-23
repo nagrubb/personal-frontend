@@ -1,6 +1,11 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import blue from '@material-ui/core/colors/blue';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -15,51 +20,68 @@ import Education from './component/Education.jsx'
 import Hobbies from './component/Hobbies.jsx'
 import CyclingGoals from './component/CyclingGoals.jsx'
 import VisitedPlaces from './component/VisitedPlaces.jsx'
+import Footer from './component/Footer.jsx'
 
 var terminalRef = null;
+
+const theme = createMuiTheme({
+  palette: {
+    primary: blue,
+    background: {
+      default: "#f1f1f1",
+    },
+  },
+});
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   main: {
-    padding: theme.spacing(4),
-    background: '#f1f1f1',
-  }
+    padding: theme.spacing(1),
+  },
+  profilePicture: {
+    padding: '12',
+    width: '100%',
+  },
 }));
 
 function App() {
   const classes = useStyles();
   return (
-    <Container className={classes.main}>
-      <QuakeConsole ref={(input) => { terminalRef = input; }} />
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={4}>
-          <Paper>
-            <img src="images/profile.jpg" style={{width: '100%'}} alt="Nathan Grubb" />
-            <div className="w3-container">
-              <ContactDetails />
-              <Divider />
-              <SkillDetails />
-              <Divider />
-              <Languages />
-              <Divider />
-              <FinanceDetails />
-              <CyclingGoals />
-              <Divider />
-              <VisitedPlaces />
-            </div>
-          </Paper>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container className={classes.main}>
+        <QuakeConsole ref={(input) => { terminalRef = input; }} />
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={4}>
+            <Paper>
+              <img className={classes.profilePicture} src="images/profile.jpg" alt="Nathan Grubb" />
+              <Container>
+                <ContactDetails />
+                <Divider />
+                <SkillDetails />
+                <Divider />
+                <Languages />
+                <Divider />
+                <FinanceDetails />
+                <CyclingGoals />
+                <Divider />
+                <VisitedPlaces />
+              </Container>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={8}>
+            <Paper>
+              <WorkExperience />
+              <Education />
+              <Hobbies />
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={8}>
-          <Paper>
-            <WorkExperience />
-            <Education />
-            <Hobbies />
-          </Paper>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+      <Footer />
+    </ThemeProvider>
   )
 }
 
