@@ -6,26 +6,6 @@ h6 {
   font-size: 14px;
 }
 
-.strava-badge- {
-  display: inline-block;
-  height: 24px;
-}
-
-.strava-badge- img {
-  visibility: hidden;
-  height: 24px;
-}
-
-.strava-badge-:hover {
-  background-position: 0 -37px;
-}
-
-.strava-badge-follow {
-  height: 24px;
-  width: 24px;
-  background: url(../images/echelon-sprite-24.png) no-repeat 0 0;
-}
-
 .pace-wrapper {
   position: relative;
 }
@@ -91,4 +71,12 @@ h6 {
   margin-right: auto;
   border-style: inset;
   border-width: 0.5px;
+}
+
+.tilda {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1100
 }
