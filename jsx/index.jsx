@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import blue from '@material-ui/core/colors/blue';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,6 +28,7 @@ var terminalRef = null;
 const theme = createMuiTheme({
   palette: {
     primary: blue,
+    secondary: blueGrey,
     background: {
       default: "#f1f1f1",
     },

@@ -1,7 +1,44 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBicycle, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
+import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class CyclingGoals extends Component {
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    fontSize: 18,
+    marginRight: theme.spacing(2),
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  stravaIconLink: {
+    marginLeft: theme.spacing(2),
+    '&:hover': {
+      opacity: 0.6,
+    },
+  },
+  errorBox: {
+    padding: theme.spacing(4),
+  },
+  spinnerBox: {
+    padding: theme.spacing(4),
+  },
+});
+
+class CyclingGoals extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,37 +78,31 @@ export default class CyclingGoals extends Component {
   render() {
     const { error, loaded, rideData } = this.state;
     var header = (
-      <div>
-        <p className="w3-large">
-          <b>
-            <i className="fa fa-bicycle fa-fw w3-margin-right w3-text-blue"></i>Cycling Goals
-            <a href="https://strava.com/athletes/22005749/badge" className="w3-margin-left strava-badge- strava-badge-follow" target="_blank"><img src="images/echelon-sprite-24.png" alt="Strava" /></a>
-          </b>
-        </p>
-      </div>
+      <Box>
+        <Typography className={this.props.classes.headerText}>
+          <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faBicycle} />Cycling Goals
+          <Link className={this.props.classes.stravaIconLink} href="https://strava.com/athletes/22005749/badge">
+            <img src="images/strava-icon.png" alt="Strava" />
+          </Link>
+        </Typography>
+      </Box>
     );
 
     if (error) {
       return (
-        <div>
+        <Box>
           {header}
-          <br />
-          <div className="w3-container w3-center">
-            <h5>Error: {error}</h5>
-          </div>
-          <br />
-        </div>
+          <Box display="flex" justifyContent="center" className={this.props.classes.errorBox}>
+            <Typography variant="h5">Error: {error}</Typography>
+          </Box>
+        </Box>
       );
     } else if (!loaded) {
       return (
-        <div>
+        <Box>
           {header}
-          <br />
-          <div className="w3-container w3-center">
-            <span><i className="fa fa-spinner fa-spin fa-5x"></i></span>
-          </div>
-          <br />
-        </div>
+          <LoadingSpinner />;
+        </Box>
       );
     } else {
       function calculateDayOfYear() {
@@ -155,3 +186,5 @@ export default class CyclingGoals extends Component {
     }
   }
 }
+
+export default withStyles(styles)(CyclingGoals);

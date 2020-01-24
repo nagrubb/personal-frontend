@@ -1,12 +1,11 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import Container from '@material-ui/core/Box';
+import React from 'react'
+import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPassport, faBriefcase, faHome, faEnvelope, faBlog } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faTwitter, faLinkedinIn, faGithub, faSlack, faGooglePlus } from '@fortawesome/free-brands-svg-icons'
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
