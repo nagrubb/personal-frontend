@@ -53,6 +53,7 @@ export default class Languages extends Component {
           </b>
         </p>
         {renderedLanguages}
+        <br />
       </div>
     );
   }

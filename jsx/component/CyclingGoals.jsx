@@ -5,15 +5,11 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBicycle, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faBicycle } from '@fortawesome/free-solid-svg-icons'
 import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
 const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText
-  },
   headerIcon: {
     color: theme.palette.primary.main,
     fontSize: 18,

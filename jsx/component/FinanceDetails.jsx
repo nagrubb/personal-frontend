@@ -1,8 +1,28 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLandmark } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class FinanceDetails extends Component {
+const styles = theme => ({
+  header: {
+    padding: theme.spacing(1)
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    fontSize: 18,
+    marginRight: theme.spacing(2),
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
+
+class FinanceDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,15 +69,15 @@ export default class FinanceDetails extends Component {
     }
 
     return (
-      <div>
-        <p className="w3-large">
-          <b>
-            <i className="fa fa-landmark fa-fw w3-margin-right w3-text-blue"></i>Finance
-          </b>
-        </p>
+      <Box>
+        <Box className={this.props.classes.header}>
+          <Typography className={this.props.classes.headerText}>
+            <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faLandmark} />Finance
+          </Typography>
+        </Box>
         {renderedFinances}
         <div className="stock-divider"></div>
-      </div>
+      </Box>
     );
   }
 }
@@ -100,26 +120,32 @@ class Quote extends Component {
     const { error, loaded, quote } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!loaded) {
+    } else {;
+      var id = 'Unknown';
+      var displayName = 'Unknown';
+      var content = <i className="fa fa-spinner fa-spin"></i>;
+
       if (this.props.info.type == 'stock') {
-        return (
-          <h6>{this.props.info.ticker}<span id={this.props.ticker} className="w3-right"><i className="fa fa-spinner fa-spin"></i></span></h6>
-        );
+        id = this.props.ticker;
+        displayName = this.props.info.ticker;
+
+        if (loaded) {
+          content = "$" + quote.closing_price;
+        }
       } else {
-        return (
-          <h6>{this.props.info.title}<span id={this.props.info.key} className="w3-right"><i className="fa fa-spinner fa-spin"></i></span></h6>
-        );
+        id = this.props.info.key;
+        displayName = this.props.info.title;
+
+        if (loaded) {
+          content = this.props.info.displayPrefix + quote.Rate + this.props.info.displayPostfix;
+        }
       }
-    } else {
-      if (this.props.info.type == 'stock') {
-        return (
-          <h6>{this.props.info.ticker}<span id={this.props.ticker} className="w3-right">${quote.closing_price}</span></h6>
-        );
-      } else {
-        return (
-          <h6>{this.props.info.title}<span id={this.props.info.key} className="w3-right">{this.props.info.displayPrefix}{quote.Rate}{this.props.info.displayPostfix}</span></h6>
-        );
-      }
+
+      return (
+        <h6>{displayName}<span id={id} className="w3-right">{content}</span></h6>
+      );
     }
   }
 }
+
+export default withStyles(styles)(FinanceDetails);
