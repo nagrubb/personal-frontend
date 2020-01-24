@@ -30,10 +30,12 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@material-ui/core": "^4.8.3",
+    "@vx/pattern": "0.0.193-alpha.2",
     "react": "^16.12.0",
     "react-animated-css": "^1.2.1",
     "react-console-emulator": "^3.0.4",
     "react-dom": "^16.12.0",
+    "react-simple-maps": "^0.12.1",
     "react-terminal-component": "^1.4.1"
   },
   "bugs": {
