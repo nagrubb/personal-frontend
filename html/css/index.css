@@ -28,22 +28,6 @@ h6 {
   height: 40px;
 }
 
-.info {
-  padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255,255,255,0.8);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
-}
-.info h4 {
-  margin: 0 0 5px;
-  color: #777;
-}
-
-.leaflet-container {
-  background-color:rgba(0,0,0,0);
-}
-
 .job-location-margin {
   margin-left: 50px;
 }
@@ -60,12 +44,4 @@ h6 {
   margin-right: auto;
   border-style: inset;
   border-width: 0.5px;
-}
-
-.tilda {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1100
 }
