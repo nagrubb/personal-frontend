@@ -1,8 +1,50 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLanguage } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class Languages extends Component {
+const styles = theme => ({
+  header: {
+    padding: theme.spacing(1)
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    fontSize: 18,
+    marginRight: theme.spacing(2),
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  errorBox: {
+    padding: theme.spacing(4),
+  },
+  progressBar: {
+    height: theme.spacing(3),
+    borderRadius: theme.spacing(2),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  progressBarFill: {
+    height: theme.spacing(3),
+    borderRadius: theme.spacing(2),
+    textAlign: 'center',
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarText: {
+    height: theme.spacing(3),
+    color: '#3c3c3c',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+});
+
+class Languages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,28 +75,31 @@ export default class Languages extends Component {
 
   render() {
     const { error, loaded, languages } = this.state;
-
     let renderedLanguages;
+
     if (!loaded) {
       renderedLanguages = <LoadingSpinner />;
     } else if (error) {
-      renderedLanguages = <div>Error: {error}</div>;
+      renderedLanguages = (
+        <Box display="flex" justifyContent="center" className={this.props.classes.errorBox}>
+          <Typography variant="h5">Error: {error}</Typography>
+        </Box>
+      );
     } else {
       renderedLanguages = languages.map((language, index) => (
-        <Language key={index} info={language} />
+        <Language key={index} info={language} classes={this.props.classes} />
       ));
     }
 
     return (
-      <div>
-        <p className="w3-large">
-          <b>
-            <i className="fa fa-language fa-fw w3-margin-right w3-text-blue"></i>Languages
-          </b>
-        </p>
+      <Box>
+        <Box className={this.props.classes.header}>
+          <Typography className={this.props.classes.headerText}>
+            <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faLanguage} />Languages
+          </Typography>
+        </Box>
         {renderedLanguages}
-        <br />
-      </div>
+      </Box>
     );
   }
 }
@@ -62,14 +107,16 @@ export default class Languages extends Component {
 class Language extends Component {
   render() {
     return (
-      <div>
+      <Box>
         <p>{this.props.info.name}</p>
-        <div className="w3-light-grey w3-round-xlarge">
-          <div className="w3-container w3-center w3-round-xlarge w3-blue" style={{width:`${this.props.info.percentage}%`}}>
-            <div className="w3-center" style={{color:"#3c3c3c"}}>{this.props.info.proficiency}</div>
-          </div>
-        </div>
-      </div>
+        <Box className={this.props.classes.progressBar}>
+          <Box className={this.props.classes.progressBarFill} style={{width:`${this.props.info.percentage}%`}}>
+            <Box className={this.props.classes.progressBarText}>{this.props.info.proficiency}</Box>
+          </Box>
+        </Box>
+      </Box>
     );
   }
 }
+
+export default withStyles(styles)(Languages);

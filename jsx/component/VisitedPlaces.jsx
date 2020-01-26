@@ -63,11 +63,30 @@ const MapChart = () => {
         <Geographies geography={ "json/world.json" }>
           {(geographies, projection) => geographies.map(geography => (
             <Geography
-              key={ geography.id }
-              geography={ geography }
-              projection={ projection }
+              key={geography.id}
+              geography={geography}
+              projection={projection}
               fill={highlighted.indexOf(geography.properties.ISO_A3) !== -1 ? "#2196F3" : "#f1f1f1"}
               onClick={() => console.log(geography.properties.ISO_A3)}
+              style={{
+                default: {
+                   stroke: "#607D8B",
+                   strokeWidth: 0.75,
+                   outline: "none",
+                },
+                hover: {
+                   fill: "#CFD8DC",
+                   stroke: "#607D8B",
+                   strokeWidth: 1,
+                   outline: "none",
+                },
+                pressed: {
+                   fill: "#FF5722",
+                   stroke: "#607D8B",
+                   strokeWidth: 1,
+                   outline: "none",
+                }
+              }}
             />
           ))}
         </Geographies>

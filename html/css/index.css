@@ -6,28 +6,6 @@ h6 {
   font-size: 14px;
 }
 
-.pace-wrapper {
-  position: relative;
-}
-
-.pace-line {
-  border-right: 1px solid black;
-  position: absolute;
-  top: -8px;
-  right: 0;
-  left: 0;
-  height: 40px;
-}
-
-.pace-percentage {
-  color: #3c3c3c;
-  position: absolute;
-  top: 2px;
-  right: 0;
-  left: 0;
-  height: 40px;
-}
-
 .job-location-margin {
   margin-left: 50px;
 }

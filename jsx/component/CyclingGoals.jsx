@@ -32,6 +32,48 @@ const styles = theme => ({
   spinnerBox: {
     padding: theme.spacing(4),
   },
+  progressWrapper: {
+    position: 'relative',
+  },
+  progressBarText: {
+    color: '#3c3c3c',
+    position: 'absolute',
+    top: 2,
+    right: 0,
+    left: 0,
+    height: 40,
+    textAlign: 'center',
+  },
+  paceLine: {
+    borderRight: '1px solid black',
+    position: 'absolute',
+    top: -8,
+    right: 0,
+    left: 0,
+    height: 40,
+  },
+  progressBarRegular: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  progressBarRegularFill: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    textAlign: 'center',
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarInverted: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarInvertedFill: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    textAlign: 'center',
+    backgroundColor: theme.palette.secondary.main,
+  },
 });
 
 class CyclingGoals extends Component {
@@ -39,8 +81,11 @@ class CyclingGoals extends Component {
     super(props);
     this.state = {
       error: null,
-      loaded: false,
-      rideData: {}
+      loaded: true,
+      rideData: {
+        ytd: 100,
+        goal: 1000
+      },
     };
   }
 
@@ -57,16 +102,10 @@ class CyclingGoals extends Component {
       )
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            rideData: result
-          });
+          this.setState({ loaded: true, rideData: result, error: null });
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error
-          });
+          this.setState({ loaded: true, error: error });
         }
       )
   }
@@ -138,46 +177,42 @@ class CyclingGoals extends Component {
         paceString = "on pace";
       }
 
-      if (onTrackPercent > 100) {
-        //we are ahead of pace, so switch up the UI.
-        //This is a little hacky considering onTrackPercent now
-        //represents the pace's percentage of the total. A
-        //better way to do this would actually be to use a different UI
-        //component or even render the UI on the server. For now, this
-        //at least makes the website look better. Will refactor
-        //as this website gets more complicated.
-        onTrackPercent = invertPercentage(onTrackPercent);
-        paceBarRightColor = 'w3-light-grey';
-        paceBarLeftColor = 'w3-blue';
-      }
+      var totalProgressStyle = this.props.classes.progressBarRegular;
+      var totalProgressFillStyle = this.props.classes.progressBarRegularFill;
+      var paceProgressStyle = this.props.classes.progressBarRegular;
+      var paceProgressFillStyle = this.props.classes.progressBarRegularFill;
 
-      //Again, a bit hacky and this could be refactored as it's the same logic
-      //as above.
       if (totalBarPercent > 100) {
         totalBarPercent = invertPercentage(totalBarPercent);
-        goalBarRightColor = 'w3-light-grey';
-        goalBarLeftColor = 'w3-blue';
+        totalProgressStyle = this.props.classes.progressBarInverted;
+        totalProgressFillStyle = this.props.classes.progressBarInvertedFill;
+      }
+
+      if (onTrackPercent > 100) {
+        onTrackPercent = invertPercentage(onTrackPercent);
+        paceProgressStyle = this.props.classes.progressBarInverted;
+        paceProgressFillStyle = this.props.classes.progressBarInvertedFill;
       }
 
       return (
-        <div>
+        <Box>
           {header}
           <p>Year End Goal ({goal} miles)</p>
-          <div className={`${goalBarLeftColor} w3-round-xlarge`} style={{height: "24px"}}>
-            <div className="pace-wrapper">
-              <div className={`w3-round-xlarge w3-center ${goalBarRightColor}`} style={{height: "24px", width: "10%"}}></div>
-              <div className="pace-line w3-hide" style={{width: "60%"}}></div>
-              <div className="pace-percentage w3-center">{totalPercent}%</div>
-            </div>
-          </div>
+          <Box className={totalProgressStyle}>
+            <Box className={this.props.classes.progressWrapper}>
+              <Box className={totalProgressFillStyle} style={{width: totalPercent + '%'}}></Box>
+              <Box className={this.props.classes.paceLine} style={{width: ytdExpectedPacePercentage + '%'}}></Box>
+              <Box className={this.props.classes.progressBarText}>{totalPercent}%</Box>
+            </Box>
+          </Box>
           <p>Pace ({paceString})</p>
-          <div className={`${paceBarLeftColor} w3-round-xlarge`} style={{height: "24px"}}>
-            <div className="pace-wrapper">
-              <div className={`w3-round-xlarge w3-center ${paceBarRightColor}`} style={{height: "24px", width: "10%"}}></div>
-              <div className="pace-percentage w3-center">{ytd} mi / {ytdGoal} mi</div>
-            </div>
-          </div>
-        </div>
+          <Box className={paceProgressStyle}>
+            <Box className={this.props.classes.progressWrapper}>
+              <Box className={paceProgressFillStyle} style={{width: onTrackPercent + '%'}}></Box>
+              <Box className={this.props.classes.progressBarText}>{ytd} mi / {ytdGoal} mi</Box>
+            </Box>
+          </Box>
+        </Box>
       );
     }
   }
