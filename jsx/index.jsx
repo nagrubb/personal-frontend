@@ -58,35 +58,49 @@ function App() {
       <Container className={classes.main}>
         <QuakeConsole ref={(input) => { terminalRef = input; }} />
         <Grid container spacing={1}>
-          <Grid item xs={12} sm={4}>
-            <Paper>
-              <img className={classes.profilePicture} src="images/profile.jpg" alt="Nathan Grubb" />
-              <Container>
-                <ContactDetails />
-                <Divider />
-                <SkillDetails />
-                <Divider />
-                <Languages />
-                <Divider />
-                <FinanceDetails />
-                <CyclingGoals />
-                <Divider />
-                <VisitedPlaces />
-              </Container>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <Paper>
-              <WorkExperience />
-              <Education />
-              <Hobbies />
-            </Paper>
-          </Grid>
+          <LeftColumn />
+          <RightColumn />
         </Grid>
       </Container>
       <Footer />
     </ThemeProvider>
   )
+}
+
+function LeftColumn() {
+  const classes = useStyles();
+  return (
+    <Grid item xs={12} sm={4}>
+      <Paper>
+        <img className={classes.profilePicture} src="images/profile.jpg" alt="Nathan Grubb" />
+        <Container>
+          <ContactDetails />
+          <Divider />
+          <SkillDetails />
+          <Divider />
+          <Languages />
+          <Divider />
+          <FinanceDetails />
+          <CyclingGoals />
+          <Divider />
+          <VisitedPlaces />
+        </Container>
+      </Paper>
+    </Grid>
+  );
+}
+
+function RightColumn() {
+  const classes = useStyles();
+  return (
+    <Grid item xs={12} sm={8}>
+      <Paper>
+        <WorkExperience />
+        <Education />
+        <Hobbies />
+      </Paper>
+    </Grid>
+  );
 }
 
 var globalApp = ReactDOM.render(<App />, document.getElementById('root'));
