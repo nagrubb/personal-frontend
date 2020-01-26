@@ -81,11 +81,8 @@ class CyclingGoals extends Component {
     super(props);
     this.state = {
       error: null,
-      loaded: true,
-      rideData: {
-        ytd: 100,
-        goal: 1000
-      },
+      loaded: false,
+      rideData: null,
     };
   }
 
