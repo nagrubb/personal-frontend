@@ -20,6 +20,15 @@ const styles = theme => ({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  divider: {
+    display: 'block',
+    marginTop: '0.5em',
+    marginBottom: '0.5em',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderStyle: 'inset',
+    borderWidth: '0.5px',
+  },
 });
 
 class FinanceDetails extends Component {
@@ -61,10 +70,10 @@ class FinanceDetails extends Component {
       renderedFinances = <div>Error: {error}</div>;
     } else {
       renderedFinances = finances.map(finance => (
-        <div key={finance.key}>
-          <div className="stock-divider"></div>
+        <Box key={finance.key}>
+          <Box className={this.props.classes.divider}></Box>
           <Quote info={finance} />
-        </div>
+        </Box>
       ));
     }
 
@@ -76,7 +85,7 @@ class FinanceDetails extends Component {
           </Typography>
         </Box>
         {renderedFinances}
-        <div className="stock-divider"></div>
+        <Box className={this.props.classes.divider}></Box>
       </Box>
     );
   }
@@ -119,7 +128,7 @@ class Quote extends Component {
   render() {
     const { error, loaded, quote } = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <Box>Error: {error.message}</Box>;
     } else {;
       var id = 'Unknown';
       var displayName = 'Unknown';
