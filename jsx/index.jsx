@@ -27,6 +27,10 @@ var terminalRef = null;
 
 const theme = createMuiTheme({
   palette: {
+    common: {
+      white: '#fcfcfc',
+      black: '#141313',
+    },
     primary: blue,
     secondary: {
       main: blueGrey[50],

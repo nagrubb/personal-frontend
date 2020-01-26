@@ -43,15 +43,15 @@ class QuakeConsole extends Component {
   render() {
     const { showConsole } = this.state;
     return (
-      <Box id="console" className={this.props.classes.tilda}>
+      <Box className={this.props.classes.tilda}>
         <Animated animationIn="slideInDown" animationOut="slideOutUp" animationInDuration={500} animationOutDuration={500} isVisible={showConsole} animateOnMount={false}>
           <ReactTerminal
             theme={{
-              background: '#141313',
-              promptSymbolColor: '#2196f3',
-              commandColor: '#fcfcfc',
-              outputColor: '#fcfcfc',
-              errorOutputColor: '#fcfcfc',
+              background: this.props.theme.palette.common.black,
+              promptSymbolColor: this.props.theme.palette.primary.main,
+              commandColor: this.props.theme.palette.common.black,
+              outputColor: this.props.theme.palette.common.black,
+              errorOutputColor: this.props.theme.palette.error.main,
               fontSize: '0.8rem',
               spacing: '1%',
               fontFamily: 'monospace',
@@ -79,4 +79,4 @@ class QuakeConsole extends Component {
   }
 }
 
-export default withStyles(styles)(QuakeConsole);
+export default withStyles(styles, { withTheme: true })(QuakeConsole);
