@@ -161,10 +161,6 @@ class CyclingGoals extends Component {
       var ytdExpectedPacePercentage = Math.round(ytdGoal / goal * 100);
       var onTrackPercent = Math.round(ytd / ytdGoal * 100);
       var paceString = null;
-      var goalBarRightColor = 'w3-blue';
-      var goalBarLeftColor = 'w3-light-grey';
-      var paceBarRightColor = 'w3-blue';
-      var paceBarLeftColor = 'w3-light-grey'
 
       if (ytd < ytdGoal) {
         paceString = `${ytdGoal - ytd} miles behind`;
