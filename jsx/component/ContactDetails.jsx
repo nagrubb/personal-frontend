@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   contactDetail: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
+    display: 'flex',
   },
   linkIcon: {
     color: theme.palette.primary.main,
