@@ -1,8 +1,40 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGraduationCap, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class Education extends Component {
+const styles = theme => ({
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
+    boxShadow: '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)',
+    marginBottom: theme.spacing(2),
+  },
+  header: {
+    padding: theme.spacing(2),
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    marginRight: theme.spacing(3),
+    fontSize: 36,
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 30,
+  },
+  content: {
+    padding: theme.spacing(0, 4, 0, 4),
+  },
+  dateIcon: {
+    color: theme.palette.primary.main,
+    marginRight: theme.spacing(2),
+  },
+});
+
+class Education extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,25 +65,27 @@ export default class Education extends Component {
 
   render() {
     const { error, loaded, credentials } = this.state;
+    var renderedEducation = <LoadingSpinner />;
 
-    let renderedEducation;
-    if (!loaded) {
-      renderedEducation = <LoadingSpinner />;
-    } else if (error) {
-      renderedEducation = <div>Error: {error}</div>;
-    } else {
+    if (error) {
+      renderedEducation = <Box>Error: {error}</Box>;
+    } else if (loaded) {
       renderedEducation = credentials.map((credential, index) => (
-        <Credential key={index} info={credential} isLast={index == credentials.length - 1} />
-      ))
+        <Credential key={index} info={credential} isLast={index == credentials.length - 1} classes={this.props.classes} />
+      ));
     }
 
     return (
-      <div className="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 className="w3-text-grey w3-padding-16">
-          <i className="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Education
-        </h2>
-        {renderedEducation}
-      </div>
+      <Box className={this.props.classes.container}>
+        <Box className={this.props.classes.header}>
+          <Typography className={this.props.classes.headerText}>
+            <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faGraduationCap} />Education
+          </Typography>
+        </Box>
+        <Box className={this.props.classes.content}>
+          {renderedEducation}
+        </Box>
+      </Box>
     );
   }
 }
@@ -59,14 +93,16 @@ export default class Education extends Component {
 class Credential extends Component {
   render() {
     return (
-      <div className="w3-container">
-        <h5 className="w3-opacity"><b>{this.props.info.institution}</b></h5>
-        <h6 className="w3-text-grey">
-          <i className="w3-text-blue fa fa-calendar-alt fa-fw w3-margin-right"></i>{this.props.info.startDate} - {this.props.info.endDate}
+      <Box>
+        <h5><b>{this.props.info.institution}</b></h5>
+        <h6>
+          <FontAwesomeIcon className={this.props.classes.dateIcon} icon={faCalendarAlt} />{this.props.info.startDate} - {this.props.info.endDate}
         </h6>
         <p>{this.props.info.degree}</p>
         {this.props.isLast ? (<br/>) : (<hr/>)}
-      </div>
+      </Box>
     );
   }
 }
+
+export default withStyles(styles)(Education);

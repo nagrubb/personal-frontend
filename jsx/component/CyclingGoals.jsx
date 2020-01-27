@@ -10,6 +10,9 @@ import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
 const styles = theme => ({
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
+  },
   headerIcon: {
     color: theme.palette.primary.main,
     fontSize: 18,
@@ -109,6 +112,7 @@ class CyclingGoals extends Component {
 
   render() {
     const { error, loaded, rideData } = this.state;
+
     var header = (
       <Box>
         <Typography className={this.props.classes.headerText}>
@@ -120,23 +124,14 @@ class CyclingGoals extends Component {
       </Box>
     );
 
+    var content = <LoadingSpinner />;
     if (error) {
-      return (
-        <Box>
-          {header}
-          <Box display="flex" justifyContent="center" className={this.props.classes.errorBox}>
-            <Typography variant="h5">Error: {error}</Typography>
-          </Box>
+      content = (
+        <Box display="flex" justifyContent="center" className={this.props.classes.errorBox}>
+          <Typography variant="h5">Error: {error}</Typography>
         </Box>
       );
-    } else if (!loaded) {
-      return (
-        <Box>
-          {header}
-          <LoadingSpinner />;
-        </Box>
-      );
-    } else {
+    } else if (loaded) {
       function calculateDayOfYear() {
         var now = new Date();
         var start = new Date(now.getFullYear(), 0, 0);
@@ -187,9 +182,8 @@ class CyclingGoals extends Component {
         paceProgressFillStyle = this.props.classes.progressBarInvertedFill;
       }
 
-      return (
+      content = (
         <Box>
-          {header}
           <p>Year End Goal ({goal} miles)</p>
           <Box className={totalProgressStyle}>
             <Box className={this.props.classes.progressWrapper}>
@@ -208,6 +202,13 @@ class CyclingGoals extends Component {
         </Box>
       );
     }
+
+    return (
+      <Box className={this.props.classes.container}>
+        {header}
+        {content}
+      </Box>
+    );
   }
 }
 

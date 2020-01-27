@@ -49,8 +49,8 @@ class QuakeConsole extends Component {
             theme={{
               background: this.props.theme.palette.common.black,
               promptSymbolColor: this.props.theme.palette.primary.main,
-              commandColor: this.props.theme.palette.common.black,
-              outputColor: this.props.theme.palette.common.black,
+              commandColor: this.props.theme.palette.common.white,
+              outputColor: this.props.theme.palette.common.white,
               errorOutputColor: this.props.theme.palette.error.main,
               fontSize: '0.8rem',
               spacing: '1%',

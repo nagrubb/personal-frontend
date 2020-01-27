@@ -38,6 +38,9 @@ const theme = createMuiTheme({
     background: {
       default: blueGrey[50],
     },
+    text: {
+      primary: '#757575',
+    },
   },
 });
 
@@ -85,6 +88,7 @@ function LeftColumn() {
           <Languages />
           <Divider />
           <FinanceDetails />
+          <Divider />
           <CyclingGoals />
           <Divider />
           <VisitedPlaces />

@@ -12,8 +12,8 @@ import {
 } from "react-simple-maps"
 
 const useStyles = makeStyles(theme => ({
-  header: {
-    padding: theme.spacing(1)
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
   },
   headerIcon: {
     color: theme.palette.primary.main,
@@ -47,8 +47,8 @@ const highlighted = [
 const MapChart = () => {
   const classes = useStyles();
   return (
-    <Box>
-      <Box className={classes.header}>
+    <Box className={classes.container}>
+      <Box>
         <Typography className={classes.headerText}>
           <FontAwesomeIcon className={classes.headerIcon} icon={faGlobeAmericas} />Visited Places
         </Typography>

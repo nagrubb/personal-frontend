@@ -7,8 +7,11 @@ import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
 const styles = theme => ({
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
+  },
   header: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(0, 0, 1, 0),
   },
   headerIcon: {
     color: theme.palette.primary.main,
@@ -78,7 +81,7 @@ class FinanceDetails extends Component {
     }
 
     return (
-      <Box>
+      <Box className={this.props.classes.container}>
         <Box className={this.props.classes.header}>
           <Typography className={this.props.classes.headerText}>
             <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faLandmark} />Finance
