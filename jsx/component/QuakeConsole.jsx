@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactTerminal, { ReactOutputRenderers, ReactThemes } from 'react-terminal-component';
 import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
 import { withStyles } from "@material-ui/core/styles";
 import {
   CommandMapping,
@@ -44,7 +45,7 @@ class QuakeConsole extends Component {
     const { showConsole } = this.state;
     return (
       <Box className={this.props.classes.tilda}>
-        <Animated animationIn="slideInDown" animationOut="slideOutUp" animationInDuration={500} animationOutDuration={500} isVisible={showConsole} animateOnMount={false}>
+        <Collapse in={showConsole}>
           <ReactTerminal
             theme={{
               background: this.props.theme.palette.common.black,
@@ -64,7 +65,7 @@ class QuakeConsole extends Component {
             }}
             emulatorState={this.customState}>
           </ReactTerminal>
-        </Animated>
+        </Collapse>
       </Box>
     );
   }
