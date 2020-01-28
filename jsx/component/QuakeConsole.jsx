@@ -10,7 +10,6 @@ import {
   EmulatorState,
   defaultCommandMapping
 } from 'javascript-terminal';
-import {Animated} from "react-animated-css";
 
 const styles = theme => ({
   tilda: {
