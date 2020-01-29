@@ -27,7 +27,7 @@ const styles = theme => ({
     fontSize: 30,
   },
   content: {
-    padding: theme.spacing(0, 4, 0, 4),
+    padding: theme.spacing(2, 5, 0, 5),
   },
   dateIcon: {
     color: theme.palette.primary.main,
@@ -105,7 +105,7 @@ class Credential extends Component {
     return (
       <Box>
         <Typography variant="h5">{this.props.info.institution}</Typography>
-        <Typography variant="h6" className={this.props.classes.dateRange}>
+        <Typography variant="body1" className={this.props.classes.dateRange}>
           <FontAwesomeIcon className={this.props.classes.dateIcon} icon={faCalendarAlt} />{this.props.info.startDate} - {this.props.info.endDate}
         </Typography>
         <Typography className={this.props.classes.degree}>{this.props.info.degree}</Typography>

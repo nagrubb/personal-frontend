@@ -13,8 +13,6 @@ Since this project is containerized with Docker, you can run the front-end piece
 
 2.  I can also make it easier to make changes during development by running NodeJS to see changes almost instantly rather than recreating the container every time which is quite slow.
 
-3. Completely remove W3 CSS in favor of materials-ui. There is no real function benefit of this, but it does clean up the code and allow me to better support theming without a lot of changes. The main benefit is just getting rid of inline styling.
-
 # Technologies
 - docker
 - nginx

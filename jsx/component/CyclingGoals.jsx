@@ -25,6 +25,7 @@ const styles = theme => ({
   },
   stravaIconLink: {
     marginLeft: theme.spacing(2),
+    verticalAlign: 'middle',
     '&:hover': {
       opacity: 0.6,
     },

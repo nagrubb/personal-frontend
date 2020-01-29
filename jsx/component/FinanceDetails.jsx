@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLandmark } from '@fortawesome/free-solid-svg-icons'
+import { faLandmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
@@ -32,16 +32,15 @@ const styles = theme => ({
     borderStyle: 'inset',
     borderWidth: '0.5px',
   },
+  value: {
+    float: 'right'
+  },
 });
 
 class FinanceDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      loaded: false,
-      finances: []
-    };
+    this.state = {loaded: false, error: null, finances: null};
   }
 
   componentDidMount() {
@@ -49,16 +48,10 @@ class FinanceDetails extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            finances: result
-          });
+          this.setState({loaded: true, error: null, finances: result});
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error: error.message
-          });
+          this.setState({loaded: true, error: error.message, finances: null});
         }
       )
   }
@@ -75,7 +68,7 @@ class FinanceDetails extends Component {
       renderedFinances = finances.map(finance => (
         <Box key={finance.key}>
           <Box className={this.props.classes.divider}></Box>
-          <Quote info={finance} />
+          <Quote info={finance} classes={this.props.classes} />
         </Box>
       ));
     }
@@ -97,11 +90,8 @@ class FinanceDetails extends Component {
 class Quote extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      loaded: false,
-      quote: null
-    };
+    this.state = {loaded: false, error: null, quote: null};
+
     if (this.props.info.type == 'stock') {
       this.url = `api/v1/stock/${this.props.info.ticker}`;
     } else {
@@ -114,49 +104,44 @@ class Quote extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            quote: result
-          });
+          this.setState({loaded: true, quote: result, error: null});
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error
-          });
+          this.setState({loaded: true, quote: null, error: error});
         }
-      )
+      );
   }
 
   render() {
     const { error, loaded, quote } = this.state;
-    if (error) {
-      return <Box>Error: {error.message}</Box>;
-    } else {;
-      var id = 'Unknown';
-      var displayName = 'Unknown';
-      var content = <i className="fa fa-spinner fa-spin"></i>;
+    var id = 'Unknown';
+    var displayName = 'Unknown';
+    var content =  <FontAwesomeIcon icon={faSpinner} spin />;
+    var isStock = this.props.info.type == 'stock';
 
-      if (this.props.info.type == 'stock') {
-        id = this.props.ticker;
-        displayName = this.props.info.ticker;
+    if (isStock) {
+      id = this.props.ticker;
+      displayName = this.props.info.ticker;
 
-        if (loaded) {
-          content = "$" + quote.closing_price;
-        }
-      } else {
-        id = this.props.info.key;
-        displayName = this.props.info.title;
-
-        if (loaded) {
-          content = this.props.info.displayPrefix + quote.Rate + this.props.info.displayPostfix;
-        }
+      if (loaded && !error) {
+        content = "$" + quote.closing_price;
       }
+    } else {
+      id = this.props.info.key;
+      displayName = this.props.info.title;
 
-      return (
-        <h6>{displayName}<span id={id} className="w3-right">{content}</span></h6>
-      );
+      if (loaded && !error) {
+        content = this.props.info.displayPrefix + quote.Rate + this.props.info.displayPostfix;
+      }
     }
+
+    if (loaded && error) {
+      content = "N/A";
+    }
+
+    return (
+      <Typography variant="h6">{displayName}<span id={id} className={this.props.classes.value}>{content}</span></Typography>
+    );
   }
 }
 
