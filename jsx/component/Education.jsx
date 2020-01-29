@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
+import React, {Fragment, Component} from 'react'
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGraduationCap, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
@@ -31,6 +32,15 @@ const styles = theme => ({
   dateIcon: {
     color: theme.palette.primary.main,
     marginRight: theme.spacing(2),
+  },
+  dateRange: {
+    margin: theme.spacing(1, 0, 1, 0),
+  },
+  degree: {
+    margin: theme.spacing(1, 0, 1, 0),
+  },
+  degreeDivider: {
+    margin: theme.spacing(2, 0, 2, 0),
   },
 });
 
@@ -94,12 +104,12 @@ class Credential extends Component {
   render() {
     return (
       <Box>
-        <h5><b>{this.props.info.institution}</b></h5>
-        <h6>
+        <Typography variant="h5">{this.props.info.institution}</Typography>
+        <Typography variant="h6" className={this.props.classes.dateRange}>
           <FontAwesomeIcon className={this.props.classes.dateIcon} icon={faCalendarAlt} />{this.props.info.startDate} - {this.props.info.endDate}
-        </h6>
-        <p>{this.props.info.degree}</p>
-        {this.props.isLast ? (<br/>) : (<hr/>)}
+        </Typography>
+        <Typography className={this.props.classes.degree}>{this.props.info.degree}</Typography>
+        {!this.props.isLast ? <Divider className={this.props.classes.degreeDivider} /> : <Fragment />}
       </Box>
     );
   }

@@ -70,22 +70,17 @@ const MapChart = () => {
               onClick={() => console.log(geography.properties.ISO_A3)}
               style={{
                 default: {
-                   stroke: "#607D8B",
-                   strokeWidth: 0.75,
                    outline: "none",
                 },
                 hover: {
-                   fill: "#CFD8DC",
-                   stroke: "#607D8B",
-                   strokeWidth: 1,
+                   opacity: 0.8,
                    outline: "none",
                 },
                 pressed: {
-                   fill: "#FF5722",
-                   stroke: "#607D8B",
-                   strokeWidth: 1,
+                   opacity: 0.6,
                    outline: "none",
-                }
+                   stroke: "#607D8B",
+                   strokeWidth: 1,                }
               }}
             />
           ))}

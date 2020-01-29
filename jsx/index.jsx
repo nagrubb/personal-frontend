@@ -42,6 +42,18 @@ const theme = createMuiTheme({
       primary: '#757575',
     },
   },
+  typography: {
+    body1: {
+      fontSize: 13,
+    },
+    h5: {
+      fontWeight: 700,
+      fontSize: 18,
+    },
+    h6: {
+      fontSize: 14,
+    },
+  },
 });
 
 const useStyles = makeStyles(theme => ({
