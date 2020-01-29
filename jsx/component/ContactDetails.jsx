@@ -4,7 +4,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPassport, faBriefcase, faHome, faEnvelope, faBlog } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faTwitter, faLinkedinIn, faGithub, faSlack, faGooglePlus } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faTwitter, faLinkedinIn, faGithub, faSlack, faGooglePlus, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -68,6 +68,9 @@ export default function ContactDetails() {
         </Link>
         <Link href="https://silent-snowman.github.io">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faBlog} />
+        </Link>
+        <Link href="https://stackoverflow.com/users/1797873/nathan-grubb">
+          <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faStackOverflow} />
         </Link>
       </Typography>
     </Container>
