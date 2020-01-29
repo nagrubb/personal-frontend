@@ -42,7 +42,7 @@
     "company" : "Microsoft",
     "companyWebsite" : "https://www.microsoft.com",
     "location" : "Redmond, WA, USA",
-    "logoIcon" : "fab fa-microsoft",
+    "logo" : "images/msft.png",
     "startDate" : "Jan 2012",
     "endDate" : "Feb 2015",
     "description" : [
@@ -55,7 +55,7 @@
     "company" : "BlackBerry",
     "companyWebsite" : "https://www.blackberry.com",
     "location" : "Waterloo, ON, Canada",
-    "logoIcon" : "fab fa-blackberry",
+    "logo" : "images/bbry.png",
     "startDate" : "Jun 2010",
     "endDate" : "Jan 2012",
     "description" : [
@@ -68,7 +68,7 @@
     "company" : "BlackBerry",
     "companyWebsite" : "https://www.blackberry.com",
     "location" : "Waterloo, ON, Canada",
-    "logoIcon" : "fab fa-blackberry",
+    "logo" : "images/bbry.png",
     "startDate" : "Apr 2008",
     "endDate" : "Aug 2009",
     "description" : [
