@@ -69,7 +69,7 @@ export default function ContactDetails() {
         <Link href="https://silent-snowman.github.io">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faBlog} />
         </Link>
-        <Link href="https://stackoverflow.com/users/1797873/nathan-grubb">
+        <Link href="https://stackoverflow.com/users/539428/nathan">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faStackOverflow} />
         </Link>
       </Typography>
