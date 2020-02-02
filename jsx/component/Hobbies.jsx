@@ -61,25 +61,6 @@ class Hobbies extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("json/hobbies.json")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            loaded: true,
-            hobbies: result
-          });
-        },
-        (error) => {
-          this.setState({
-            loaded: true,
-            error: error.message
-          });
-        }
-      )
-  }
-
   render() {
     return (
       <Box className={this.props.classes.container}>

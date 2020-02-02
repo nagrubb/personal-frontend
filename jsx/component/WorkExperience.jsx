@@ -29,6 +29,10 @@ const styles = theme => ({
   content: {
     padding: theme.spacing(2, 5, 0, 5),
   },
+  companyIcon: {
+    height: 16,
+    marginLeft: theme.spacing(2),
+  },
   dateIcon: {
     color: theme.palette.primary.main,
     marginRight: theme.spacing(2),
@@ -121,7 +125,10 @@ class Job extends Component {
 
     return (
       <Box>
-        <Typography variant="h5">{this.props.job.title} / {this.props.job.company}</Typography>
+        <Typography variant="h5">
+          {this.props.job.title} / {this.props.job.company}
+          <img src={this.props.job.logo} className={this.props.classes.companyIcon} />
+        </Typography>
         <Typography variant="body1" className={this.props.classes.dateRange}>
           <FontAwesomeIcon className={this.props.classes.dateIcon} icon={faCalendarAlt} />{duration}
           <span style={{float: 'right'}}>{this.props.job.location}
