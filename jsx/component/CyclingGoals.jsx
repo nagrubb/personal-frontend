@@ -1,13 +1,92 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBicycle } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
+import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class CyclingGoals extends Component {
+const styles = theme => ({
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    fontSize: 18,
+    marginRight: theme.spacing(2),
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  stravaIconLink: {
+    marginLeft: theme.spacing(2),
+    verticalAlign: 'middle',
+    '&:hover': {
+      opacity: 0.6,
+    },
+  },
+  errorBox: {
+    padding: theme.spacing(4),
+  },
+  spinnerBox: {
+    padding: theme.spacing(4),
+  },
+  progressWrapper: {
+    position: 'relative',
+  },
+  progressBarText: {
+    color: '#3c3c3c',
+    position: 'absolute',
+    top: 2,
+    right: 0,
+    left: 0,
+    height: 40,
+    textAlign: 'center',
+  },
+  paceLine: {
+    borderRight: '1px solid black',
+    position: 'absolute',
+    top: -8,
+    right: 0,
+    left: 0,
+    height: 40,
+  },
+  progressBarRegular: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  progressBarRegularFill: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    textAlign: 'center',
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarInverted: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarInvertedFill: {
+    borderRadius: theme.spacing(2),
+    height: theme.spacing(3),
+    textAlign: 'center',
+    backgroundColor: theme.palette.secondary.main,
+  },
+});
+
+class CyclingGoals extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       loaded: false,
-      rideData: {}
+      rideData: null,
     };
   }
 
@@ -24,56 +103,36 @@ export default class CyclingGoals extends Component {
       )
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            rideData: result
-          });
+          this.setState({ loaded: true, rideData: result, error: null });
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error
-          });
+          this.setState({ loaded: true, error: error });
         }
       )
   }
 
   render() {
     const { error, loaded, rideData } = this.state;
+
     var header = (
-      <div>
-        <p className="w3-large">
-          <b>
-            <i className="fa fa-bicycle fa-fw w3-margin-right w3-text-blue"></i>Cycling Goals
-            <a href="https://strava.com/athletes/22005749/badge" className="w3-margin-left strava-badge- strava-badge-follow" target="_blank"><img src="images/echelon-sprite-24.png" alt="Strava" /></a>
-          </b>
-        </p>
-      </div>
+      <Box>
+        <Typography className={this.props.classes.headerText}>
+          <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faBicycle} />Cycling Goals
+          <Link className={this.props.classes.stravaIconLink} href="https://strava.com/athletes/22005749/badge">
+            <img src="images/strava-icon.png" alt="Strava" />
+          </Link>
+        </Typography>
+      </Box>
     );
 
+    var content = <LoadingSpinner />;
     if (error) {
-      return (
-        <div>
-          {header}
-          <br />
-          <div className="w3-container w3-center">
-            <h5>Error: {error}</h5>
-          </div>
-          <br />
-        </div>
+      content = (
+        <Box display="flex" justifyContent="center" className={this.props.classes.errorBox}>
+          <Typography variant="h5">Error: {error}</Typography>
+        </Box>
       );
-    } else if (!loaded) {
-      return (
-        <div>
-          {header}
-          <br />
-          <div className="w3-container w3-center">
-            <span><i className="fa fa-spinner fa-spin fa-5x"></i></span>
-          </div>
-          <br />
-        </div>
-      );
-    } else {
+    } else if (loaded) {
       function calculateDayOfYear() {
         var now = new Date();
         var start = new Date(now.getFullYear(), 0, 0);
@@ -98,10 +157,6 @@ export default class CyclingGoals extends Component {
       var ytdExpectedPacePercentage = Math.round(ytdGoal / goal * 100);
       var onTrackPercent = Math.round(ytd / ytdGoal * 100);
       var paceString = null;
-      var goalBarRightColor = 'w3-blue';
-      var goalBarLeftColor = 'w3-light-grey';
-      var paceBarRightColor = 'w3-blue';
-      var paceBarLeftColor = 'w3-light-grey'
 
       if (ytd < ytdGoal) {
         paceString = `${ytdGoal - ytd} miles behind`;
@@ -111,47 +166,51 @@ export default class CyclingGoals extends Component {
         paceString = "on pace";
       }
 
-      if (onTrackPercent > 100) {
-        //we are ahead of pace, so switch up the UI.
-        //This is a little hacky considering onTrackPercent now
-        //represents the pace's percentage of the total. A
-        //better way to do this would actually be to use a different UI
-        //component or even render the UI on the server. For now, this
-        //at least makes the website look better. Will refactor
-        //as this website gets more complicated.
-        onTrackPercent = invertPercentage(onTrackPercent);
-        paceBarRightColor = 'w3-light-grey';
-        paceBarLeftColor = 'w3-blue';
-      }
+      var totalProgressStyle = this.props.classes.progressBarRegular;
+      var totalProgressFillStyle = this.props.classes.progressBarRegularFill;
+      var paceProgressStyle = this.props.classes.progressBarRegular;
+      var paceProgressFillStyle = this.props.classes.progressBarRegularFill;
 
-      //Again, a bit hacky and this could be refactored as it's the same logic
-      //as above.
       if (totalBarPercent > 100) {
         totalBarPercent = invertPercentage(totalBarPercent);
-        goalBarRightColor = 'w3-light-grey';
-        goalBarLeftColor = 'w3-blue';
+        totalProgressStyle = this.props.classes.progressBarInverted;
+        totalProgressFillStyle = this.props.classes.progressBarInvertedFill;
       }
 
-      return (
-        <div>
-          {header}
+      if (onTrackPercent > 100) {
+        onTrackPercent = invertPercentage(onTrackPercent);
+        paceProgressStyle = this.props.classes.progressBarInverted;
+        paceProgressFillStyle = this.props.classes.progressBarInvertedFill;
+      }
+
+      content = (
+        <Box>
           <p>Year End Goal ({goal} miles)</p>
-          <div className={`${goalBarLeftColor} w3-round-xlarge`} style={{height: "24px"}}>
-            <div className="pace-wrapper">
-              <div className={`w3-round-xlarge w3-center ${goalBarRightColor}`} style={{height: "24px", width: "10%"}}></div>
-              <div className="pace-line w3-hide" style={{width: "60%"}}></div>
-              <div className="pace-percentage w3-center">{totalPercent}%</div>
-            </div>
-          </div>
+          <Box className={totalProgressStyle}>
+            <Box className={this.props.classes.progressWrapper}>
+              <Box className={totalProgressFillStyle} style={{width: totalPercent + '%'}}></Box>
+              <Box className={this.props.classes.paceLine} style={{width: ytdExpectedPacePercentage + '%'}}></Box>
+              <Box className={this.props.classes.progressBarText}>{totalPercent}%</Box>
+            </Box>
+          </Box>
           <p>Pace ({paceString})</p>
-          <div className={`${paceBarLeftColor} w3-round-xlarge`} style={{height: "24px"}}>
-            <div className="pace-wrapper">
-              <div className={`w3-round-xlarge w3-center ${paceBarRightColor}`} style={{height: "24px", width: "10%"}}></div>
-              <div className="pace-percentage w3-center">{ytd} mi / {ytdGoal} mi</div>
-            </div>
-          </div>
-        </div>
+          <Box className={paceProgressStyle}>
+            <Box className={this.props.classes.progressWrapper}>
+              <Box className={paceProgressFillStyle} style={{width: onTrackPercent + '%'}}></Box>
+              <Box className={this.props.classes.progressBarText}>{ytd} mi / {ytdGoal} mi</Box>
+            </Box>
+          </Box>
+        </Box>
       );
     }
+
+    return (
+      <Box className={this.props.classes.container}>
+        {header}
+        {content}
+      </Box>
+    );
   }
 }
+
+export default withStyles(styles)(CyclingGoals);

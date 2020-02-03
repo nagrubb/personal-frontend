@@ -1,6 +1,6 @@
 FROM nginx:latest
 ARG npm_build_args="-g [ envify --NODE_ENV production ] -g uglifyify"
-MAINTAINER Nathan Grubb "me@nathangrubb.io"
+MAINTAINER Nathan Grubb "nate@nathangrubb.io"
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY html /usr/share/nginx/html

@@ -1,12 +1,20 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { makeStyles } from '@material-ui/core/styles';
 
-export default class LoadingSpinner extends Component {
-  render() {
-    return (
-      <div className="w3-center w3-margin-bottom">
-        <i className="w3-center w3-text-grey fa fa-spinner fa-spin fa-5x w3-hover-opacity"></i>
-      </div>
-    );
-  }
+const useStyles = makeStyles(theme => ({
+  spinnerBox: {
+    padding: theme.spacing(4),
+  },
+}));
+
+export default function LoadingSpinner() {
+  const classes = useStyles();
+  return (
+    <Box display="flex" justifyContent="center" className={classes.spinnerBox}>
+      <FontAwesomeIcon icon={faSpinner} size="5x" spin />
+    </Box>
+  );
 }

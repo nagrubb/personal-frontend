@@ -1,15 +1,46 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLandmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from './LoadingSpinner.jsx'
 
-export default class FinanceDetails extends Component {
+const styles = theme => ({
+  container: {
+    padding: theme.spacing(2, 0, 2, 0),
+  },
+  header: {
+    padding: theme.spacing(0, 0, 1, 0),
+  },
+  headerIcon: {
+    color: theme.palette.primary.main,
+    fontSize: 18,
+    marginRight: theme.spacing(2),
+  },
+  headerText: {
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  divider: {
+    display: 'block',
+    marginTop: '0.5em',
+    marginBottom: '0.5em',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderStyle: 'inset',
+    borderWidth: '0.5px',
+  },
+  value: {
+    float: 'right'
+  },
+});
+
+class FinanceDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      loaded: false,
-      finances: []
-    };
+    this.state = {loaded: false, error: null, finances: null};
   }
 
   componentDidMount() {
@@ -17,16 +48,10 @@ export default class FinanceDetails extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            finances: result
-          });
+          this.setState({loaded: true, error: null, finances: result});
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error: error.message
-          });
+          this.setState({loaded: true, error: error.message, finances: null});
         }
       )
   }
@@ -41,23 +66,23 @@ export default class FinanceDetails extends Component {
       renderedFinances = <div>Error: {error}</div>;
     } else {
       renderedFinances = finances.map(finance => (
-        <div key={finance.key}>
-          <div className="stock-divider"></div>
-          <Quote info={finance} />
-        </div>
+        <Box key={finance.key}>
+          <Box className={this.props.classes.divider}></Box>
+          <Quote info={finance} classes={this.props.classes} />
+        </Box>
       ));
     }
 
     return (
-      <div>
-        <p className="w3-large">
-          <b>
-            <i className="fa fa-landmark fa-fw w3-margin-right w3-text-blue"></i>Finance
-          </b>
-        </p>
+      <Box className={this.props.classes.container}>
+        <Box className={this.props.classes.header}>
+          <Typography className={this.props.classes.headerText}>
+            <FontAwesomeIcon className={this.props.classes.headerIcon} icon={faLandmark} />Finance
+          </Typography>
+        </Box>
         {renderedFinances}
-        <div className="stock-divider"></div>
-      </div>
+        <Box className={this.props.classes.divider}></Box>
+      </Box>
     );
   }
 }
@@ -65,11 +90,8 @@ export default class FinanceDetails extends Component {
 class Quote extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      loaded: false,
-      quote: null
-    };
+    this.state = {loaded: false, error: null, quote: null};
+
     if (this.props.info.type == 'stock') {
       this.url = `api/v1/stock/${this.props.info.ticker}`;
     } else {
@@ -82,44 +104,45 @@ class Quote extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            loaded: true,
-            quote: result
-          });
+          this.setState({loaded: true, quote: result, error: null});
         },
         (error) => {
-          this.setState({
-            loaded: true,
-            error
-          });
+          this.setState({loaded: true, quote: null, error: error});
         }
-      )
+      );
   }
 
   render() {
     const { error, loaded, quote } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!loaded) {
-      if (this.props.info.type == 'stock') {
-        return (
-          <h6>{this.props.info.ticker}<span id={this.props.ticker} className="w3-right"><i className="fa fa-spinner fa-spin"></i></span></h6>
-        );
-      } else {
-        return (
-          <h6>{this.props.info.title}<span id={this.props.info.key} className="w3-right"><i className="fa fa-spinner fa-spin"></i></span></h6>
-        );
+    var id = 'Unknown';
+    var displayName = 'Unknown';
+    var content =  <FontAwesomeIcon icon={faSpinner} spin />;
+    var isStock = this.props.info.type == 'stock';
+
+    if (isStock) {
+      id = this.props.ticker;
+      displayName = this.props.info.ticker;
+
+      if (loaded && !error) {
+        content = "$" + quote.closing_price;
       }
     } else {
-      if (this.props.info.type == 'stock') {
-        return (
-          <h6>{this.props.info.ticker}<span id={this.props.ticker} className="w3-right">${quote.closing_price}</span></h6>
-        );
-      } else {
-        return (
-          <h6>{this.props.info.title}<span id={this.props.info.key} className="w3-right">{this.props.info.displayPrefix}{quote.Rate}{this.props.info.displayPostfix}</span></h6>
-        );
+      id = this.props.info.key;
+      displayName = this.props.info.title;
+
+      if (loaded && !error) {
+        content = this.props.info.displayPrefix + quote.Rate + this.props.info.displayPostfix;
       }
     }
+
+    if (loaded && error) {
+      content = "N/A";
+    }
+
+    return (
+      <Typography variant="h6">{displayName}<span id={id} className={this.props.classes.value}>{content}</span></Typography>
+    );
   }
 }
+
+export default withStyles(styles)(FinanceDetails);

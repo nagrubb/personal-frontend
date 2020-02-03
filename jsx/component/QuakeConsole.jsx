@@ -1,12 +1,29 @@
 import React, {Component} from 'react'
 import ReactTerminal, { ReactOutputRenderers, ReactThemes } from 'react-terminal-component';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import { withStyles } from "@material-ui/core/styles";
 import {
-  CommandMapping, OutputFactory, OutputType, EmulatorState,
+  CommandMapping,
+  OutputFactory,
+  OutputType,
+  EmulatorState,
   defaultCommandMapping
 } from 'javascript-terminal';
-import {Animated} from "react-animated-css";
 
-export default class QuakeConsole extends Component {
+const styles = theme => ({
+  tilda: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 1100,
+    display: 'block',
+    overflow: 'hidden',
+  },
+});
+
+class QuakeConsole extends Component {
   constructor(props) {
     super(props);
     this.state = { showConsole: false };
@@ -25,21 +42,16 @@ export default class QuakeConsole extends Component {
 
   render() {
     const { showConsole } = this.state;
-    var displayStyle = {
-      display: 'block',
-      overflow: 'hidden'
-    };
-
     return (
-      <div id="console" className="tilda" style={displayStyle}>
-        <Animated animationIn="slideInDown" animationOut="slideOutUp" animationInDuration={500} animationOutDuration={500} isVisible={showConsole} animateOnMount={false}>
+      <Box className={this.props.classes.tilda}>
+        <Collapse in={showConsole}>
           <ReactTerminal
             theme={{
-              background: '#141313',
-              promptSymbolColor: '#2196f3',
-              commandColor: '#fcfcfc',
-              outputColor: '#fcfcfc',
-              errorOutputColor: '#fcfcfc',
+              background: this.props.theme.palette.common.black,
+              promptSymbolColor: this.props.theme.palette.primary.main,
+              commandColor: this.props.theme.palette.common.white,
+              outputColor: this.props.theme.palette.common.white,
+              errorOutputColor: this.props.theme.palette.error.main,
               fontSize: '0.8rem',
               spacing: '1%',
               fontFamily: 'monospace',
@@ -52,8 +64,8 @@ export default class QuakeConsole extends Component {
             }}
             emulatorState={this.customState}>
           </ReactTerminal>
-        </Animated>
-      </div>
+        </Collapse>
+      </Box>
     );
   }
 
@@ -66,3 +78,5 @@ export default class QuakeConsole extends Component {
     this.setState({ showConsole: !this.state.showConsole });
   }
 }
+
+export default withStyles(styles, { withTheme: true })(QuakeConsole);
