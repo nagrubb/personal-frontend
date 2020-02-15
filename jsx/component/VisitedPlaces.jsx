@@ -41,7 +41,8 @@ const highlighted = [
   "VNM",
   "NZL",
   "CRI",
-  "KOR"
+  "KOR",
+  "FIN",
 ];
 
 const MapChart = () => {
