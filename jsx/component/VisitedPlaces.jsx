@@ -43,6 +43,7 @@ const highlighted = [
   "CRI",
   "KOR",
   "FIN",
+  "NLD",
 ];
 
 const MapChart = () => {
