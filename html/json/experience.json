@@ -1,13 +1,27 @@
 [
   {
-    "title" : "Software Engineering Manager",
+    "title" : "Senior Engineering Manager",
     "company" : "Axon",
     "location" : "HCMC, Vietnam",
     "companyWebsite" : "https:///www.axon.com",
     "logo" : "images/axon.png",
     "current" : true,
+    "startDate" : "January 2021",
+    "description" : []   
+  },
+  {
+    "title" : "Software Engineering Manager",
+    "company" : "Axon",
+    "location" : "HCMC, Vietnam",
+    "companyWebsite" : "https:///www.axon.com",
+    "logo" : "images/axon.png",
     "startDate" : "May 2019",
-    "description" : []
+    "endDate" : "December 2020",
+    "description" : [
+      "Managed and grew a team from 3 engineers to 13 engineers working across Axon's body worn and in-car camera systems. Drove and completed an initiative to have all continuous integration as code backed entirely by AWS Compute and Storage to ease onboarding engineers on projects new to them and scale the development of projects.",
+      "Adapted team structure and process by re-organizing my team as well as suggesting organizational structure within the division to best align across timezones, company initiatives, support ownership and encourage reuse and quality.",
+      "Took on expanded scope to manage other managers including backend services to support key features such as automatic license plate recognition (ALPR) and improving return merchandise authorization (RMA) process."
+    ]
   },
   {
     "title" : "Staff Software Engineer",
