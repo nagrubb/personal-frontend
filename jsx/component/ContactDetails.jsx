@@ -38,10 +38,10 @@ export default function ContactDetails() {
         <FontAwesomeIcon className={classes.icon} icon={faPassport} />Nathan Grubb
       </Typography>
       <Typography className={classes.contactDetail} variant="body2">
-        <FontAwesomeIcon className={classes.icon} icon={faBriefcase} />Engineering Manager
+        <FontAwesomeIcon className={classes.icon} icon={faBriefcase} />Senior Engineering Manager
       </Typography>
       <Typography className={classes.contactDetail} variant="body2">
-        <FontAwesomeIcon className={classes.icon} icon={faHome} />Hồ Chí Minh, Việt Nam
+        <FontAwesomeIcon className={classes.icon} icon={faHome} />Seattle, WA, USA
       </Typography>
       <Typography className={classes.contactDetail} variant="body2">
         <FontAwesomeIcon className={classes.icon} icon={faEnvelope} />
