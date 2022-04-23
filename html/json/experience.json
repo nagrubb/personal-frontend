@@ -2,9 +2,10 @@
   { 
     "title" : "Software Development Manager",
     "company" : "Amazon",
+    "location" : "Seattle, WA",
     "companyWebsite" : "https://www.amazon.com",
     "logo" : "images/amzn.png",
-    "current" : false,
+    "current" : true,
     "startDate" : "May 2022",
     "description" : []
   },
@@ -14,7 +15,6 @@
     "location" : "HCMC, Vietnam",
     "companyWebsite" : "https:///www.axon.com",
     "logo" : "images/axon.png",
-    "current" : true,
     "startDate" : "January 2021",
     "endDate" : "April 2022",
     "description" : []   
