@@ -1,4 +1,13 @@
 [
+  { 
+    "title" : "Software Development Manager",
+    "company" : "Amazon",
+    "companyWebsite" : "https://www.amazon.com",
+    "logo" : "images/amzn.png",
+    "current" : false,
+    "startDate" : "May 2022",
+    "description" : []
+  },
   {
     "title" : "Senior Engineering Manager",
     "company" : "Axon",
@@ -7,6 +16,7 @@
     "logo" : "images/axon.png",
     "current" : true,
     "startDate" : "January 2021",
+    "endDate" : "April 2022"
     "description" : []   
   },
   {
