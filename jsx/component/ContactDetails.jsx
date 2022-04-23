@@ -38,7 +38,7 @@ export default function ContactDetails() {
         <FontAwesomeIcon className={classes.icon} icon={faPassport} />Nathan Grubb
       </Typography>
       <Typography className={classes.contactDetail} variant="body2">
-        <FontAwesomeIcon className={classes.icon} icon={faBriefcase} />Senior Engineering Manager
+        <FontAwesomeIcon className={classes.icon} icon={faBriefcase} />Software Development Manager
       </Typography>
       <Typography className={classes.contactDetail} variant="body2">
         <FontAwesomeIcon className={classes.icon} icon={faHome} />Seattle, WA, USA
