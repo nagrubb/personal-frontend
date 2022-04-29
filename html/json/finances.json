@@ -1,7 +1,8 @@
 [
   {"type":"stock", "key":"AXON", "ticker":"AXON"},
-  {"type":"stock", "key":"MSFT2", "ticker":"MSFT"},
+  {"type":"stock", "key":"MSFT", "ticker":"MSFT"},
   {"type":"stock", "key":"AMZN", "ticker":"AMZN"},
+  {"type":"stock", "key":"FB", "ticker":"FB"},
   {"type":"currency", "key":"USD-CAD", "title":"$1 USD", "from":"USD", "to":"CAD", "displayPrefix":"$", "displayPostfix":" CAD"},
   {"type":"currency", "key":"USD-VND", "title":"$1 USD", "from":"USD", "to":"VND", "displayPrefix":"", "displayPostfix":" VNĐ"}
 ]
