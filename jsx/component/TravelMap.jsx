@@ -77,7 +77,7 @@ const MapChart = () => {
               key={geography.id}
               geography={geography}
               projection={projection}
-              fill={geography.properties.ISO_A3 in overrideCountryColour ? overrideCountryColour[geography.properties.ISO_A3] : defaultColour}
+              fill={overrideCountryColour[geography.properties.ISO_A3] ?? defaultColour}
               onClick={() => console.log(geography.properties.ISO_A3)}
               style={{
                 default: {
@@ -91,7 +91,8 @@ const MapChart = () => {
                    opacity: 0.6,
                    outline: "none",
                    stroke: "#607D8B",
-                   strokeWidth: 1,                }
+                   strokeWidth: 1,
+                },
               }}
             />
           ))}
