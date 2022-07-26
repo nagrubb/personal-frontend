@@ -91,6 +91,7 @@ class Quote extends Component {
   constructor(props) {
     super(props);
     this.state = {loaded: false, error: null, quote: null};
+    this.retries = 3;
 
     if (this.props.info.type == 'stock') {
       this.url = `api/v1/stock/${this.props.info.ticker}`;
@@ -100,16 +101,37 @@ class Quote extends Component {
   }
 
   componentDidMount() {
+    this.fetchQuote();
+  }
+
+  fetchQuote() {
     fetch(this.url)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({loaded: true, quote: result, error: null});
-        },
-        (error) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Response was not OK');
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log('success');
+        console.log(this.url);
+        console.log(result);
+        this.setState({loaded: true, quote: result, error: null});
+      })
+      .catch((error) => {
+        console.log('error');
+        console.log(this.url);
+        console.log(error);
+        this.retries = this.retries - 1;
+
+        if (this.retries > 0) {
+          console.log(`Retries remaining: ${this.retries}`);
+          this.fetchQuote();
+        } else {
+          console.log('No retries remaining. Giving up!');
           this.setState({loaded: true, quote: null, error: error});
         }
-      );
+      });
   }
 
   render() {
