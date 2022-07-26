@@ -20,7 +20,7 @@ import WorkExperience from './component/WorkExperience.jsx'
 import Education from './component/Education.jsx'
 import Hobbies from './component/Hobbies.jsx'
 import CyclingGoals from './component/CyclingGoals.jsx'
-import VisitedPlaces from './component/VisitedPlaces.jsx'
+import TravelMap from './component/TravelMap.jsx'
 import Footer from './component/Footer.jsx'
 
 var terminalRef = null;
@@ -106,7 +106,7 @@ function LeftColumn() {
           <Divider />
           <CyclingGoals />
           <Divider />
-          <VisitedPlaces />
+          <TravelMap />
         </Container>
       </Paper>
     </Grid>
