@@ -1,6 +1,6 @@
 [
   {"type":"stock", "key":"MSFT", "ticker":"MSFT"},
-  {"type":"stock", "key":"FB", "ticker":"FB"},
+  {"type":"stock", "key":"META", "ticker":"META"},
   {"type":"stock", "key":"AMZN", "ticker":"AMZN"},
   {"type":"stock", "key":"AXON", "ticker":"AXON"},
   {"type":"stock", "key":"RIVN", "ticker":"RIVN"},
