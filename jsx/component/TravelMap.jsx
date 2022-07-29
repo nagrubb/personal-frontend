@@ -27,24 +27,33 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const highlighted = [
-  "CAN",
-  "USA",
-  "TWN",
-  "CHN",
-  "ISL",
-  "FRA",
-  "GBR",
-  "ESP",
-  "IND",
-  "THA",
-  "VNM",
-  "NZL",
-  "CRI",
-  "KOR",
-  "FIN",
-  "NLD",
-];
+const visitedColour = '#2196F3';
+const livedColour = '#555555';
+const defaultColour = '#f1f1f1';
+const plannedColor = '#9196F3';
+
+const overrideCountryColour = {
+  "CAN" : livedColour,    //Canada
+  "DOM" : visitedColour,  //Dominican Republic
+  "CRI" : visitedColour,  //Costa Rica
+  "USA" : livedColour,    //United States
+  "ISL" : visitedColour,  //Iceland
+  "FRA" : visitedColour,  //France
+  "GBR" : visitedColour,  //Great Britian/England
+  "CHN" : visitedColour,  //China
+  "TWN" : visitedColour,  //Taiwan
+  "ESP" : visitedColour,  //Spain
+  "IND" : visitedColour,  //India
+  "THA" : visitedColour,  //Thailand
+  "VNM" : livedColour,    //Vietnam
+  "NZL" : visitedColour,  //New Zealand
+  "KOR" : visitedColour,  //South Korea
+  "FIN" : visitedColour,  //Finland
+  "NLD" : visitedColour,  //Netherlands
+  "ITA" : visitedColour,  //Italy
+  "PER" : plannedColor,   //Peru
+  "MEX" : plannedColor    //Mexico
+};
 
 const MapChart = () => {
   const classes = useStyles();
@@ -52,7 +61,7 @@ const MapChart = () => {
     <Box className={classes.container}>
       <Box>
         <Typography className={classes.headerText}>
-          <FontAwesomeIcon className={classes.headerIcon} icon={faGlobeAmericas} />Visited Places
+          <FontAwesomeIcon className={classes.headerIcon} icon={faGlobeAmericas} />Travel
         </Typography>
       </Box>
       <ComposableMap
@@ -68,7 +77,7 @@ const MapChart = () => {
               key={geography.id}
               geography={geography}
               projection={projection}
-              fill={highlighted.indexOf(geography.properties.ISO_A3) !== -1 ? "#2196F3" : "#f1f1f1"}
+              fill={overrideCountryColour[geography.properties.ISO_A3] ?? defaultColour}
               onClick={() => console.log(geography.properties.ISO_A3)}
               style={{
                 default: {
@@ -82,7 +91,8 @@ const MapChart = () => {
                    opacity: 0.6,
                    outline: "none",
                    stroke: "#607D8B",
-                   strokeWidth: 1,                }
+                   strokeWidth: 1,
+                },
               }}
             />
           ))}

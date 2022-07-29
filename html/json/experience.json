@@ -4,10 +4,12 @@
     "company" : "Amazon",
     "location" : "Seattle, WA, USA",
     "companyWebsite" : "https://www.amazon.com",
-    "logo" : "images/amzn.png",
+    "logo" : "images/aws.png",
     "current" : true,
     "startDate" : "May 2022",
-    "description" : []
+    "description" : [
+      "Bringing up new as well as monitoring and supporting AWS EC2 Nitro Storage Optimized Instance types."
+    ]
   },
   {
     "title" : "Senior Engineering Manager",
@@ -20,7 +22,7 @@
     "description" : [
       "Managed the teams that developed and launched the device software and backend services for a next generation in-car public safety solution, Axon Fleet 3 with Automated License Plate Recognition (ALPR).",
       "Partnered closely with Axon's imaging and AI/ML teams to integrate models for plate detection, tracking and optical character reognition (OCR).",
-      "Worked alongside Product & QA organizations by publishing software updates internally every week."
+      "Worked alongside Product & QA organizations by publishing internal weekly software updates to devices."
     ]
   },
   {

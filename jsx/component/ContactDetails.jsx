@@ -57,7 +57,7 @@ export default function ContactDetails() {
         <Link href="https://www.linkedin.com/in/nathangrubb">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faLinkedinIn} />
         </Link>
-        <Link href="https://github.com/silent-snowman">
+        <Link href="https://github.com/nagrubb">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faGithub} />
         </Link>
         <Link href="https://nathancaty.slack.com">
@@ -66,7 +66,7 @@ export default function ContactDetails() {
         <Link href="https://plus.google.com/u/0/101913867428624409865">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faGooglePlus} />
         </Link>
-        <Link href="https://silent-snowman.github.io">
+        <Link href="https://nagrubb.github.io">
           <FontAwesomeIcon className={classes.linkIcon} size="2x" icon={faBlog} />
         </Link>
         <Link href="https://stackoverflow.com/users/539428/nathan">
