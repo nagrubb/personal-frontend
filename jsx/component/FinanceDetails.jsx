@@ -91,7 +91,11 @@ class Quote extends Component {
   constructor(props) {
     super(props);
     this.state = {loaded: false, error: null, quote: null};
-    this.retries = 3;
+
+    //Stock quotes have a limit of 5 over 1 minute so make sure our retries
+    //cover this time period. Currently this is set to 75 seconds (5 * 15).
+    this.retries = 5;
+    this.retryDelay = 15000; // 15 seconds
 
     if (this.props.info.type == 'stock') {
       this.url = `api/v1/stock/${this.props.info.ticker}`;
@@ -108,25 +112,21 @@ class Quote extends Component {
     fetch(this.url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Response was not OK');
+          throw new Error(response);
         }
         return response.json();
       })
       .then((result) => {
-        console.log('success');
-        console.log(this.url);
-        console.log(result);
         this.setState({loaded: true, quote: result, error: null});
       })
       .catch((error) => {
-        console.log('error');
         console.log(this.url);
         console.log(error);
         this.retries = this.retries - 1;
 
         if (this.retries > 0) {
           console.log(`Retries remaining: ${this.retries}`);
-          this.fetchQuote();
+          setTimeout(() => { this.fetchQuote(); }, this.retryDelay);
         } else {
           console.log('No retries remaining. Giving up!');
           this.setState({loaded: true, quote: null, error: error});
